@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuthStore } from '../store/authStore';
 
 export default function About() {
   return (
@@ -49,6 +50,17 @@ export default function About() {
                 <h4 className="font-semibold text-gray-900 mb-2">Countries</h4>
                 <p className="text-gray-600">25+</p>
               </div>
+            </div>
+            <div className="mt-6">
+              {useAuthStore.getState().isAuthenticated ? (
+                <Link to="/dashboard" className="text-blue-600 hover:text-blue-700">
+                  Go to Dashboard →
+                </Link>
+              ) : (
+                <Link to="/register" className="text-blue-600 hover:text-blue-700">
+                  Create an Account →
+                </Link>
+              )}
             </div>
           </div>
         </div>
