@@ -1,20 +1,17 @@
+
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
-  Zap, 
-  Users, 
-  GitBranch, 
-  BarChart, 
-  Calendar,
-  Lock,
-  Sparkles,
   Workflow,
-  ArrowRight
+  Users, 
+  BarChart, 
+  GitBranch,
+  ArrowRight,
+  Shield
 } from 'lucide-react';
 import FeatureCard from '../components/features/FeatureCard';
 import FeatureComparison from '../components/features/FeatureComparison';
 import DemoProjectCard from '../components/features/DemoProjectCard';
-
-import { Link } from 'react-router-dom';
 
 export default function Features() {
   const powerFeatures = [
@@ -46,25 +43,24 @@ export default function Features() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      {/* Hero Section */}
       <div className="flex justify-between items-center mb-16">
         <Link to="/" className="text-blue-600 hover:text-blue-700">← Back to Home</Link>
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Unlock the Full Potential of App_Pal
-        </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Experience powerful project management features and take your development workflow to the next level
-        </p>
+        <div className="text-center flex-1">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Unlock the Full Potential of App_Pal
+          </h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Experience powerful project management features and take your development workflow to the next level
+          </p>
+        </div>
       </div>
 
-      {/* Feature Cards */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
         {powerFeatures.map((feature) => (
           <FeatureCard key={feature.title} {...feature} />
         ))}
       </div>
 
-      {/* Interactive Demo */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-16">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Experience the Difference</h2>
         <div className="grid md:grid-cols-2 gap-8">
@@ -73,10 +69,8 @@ export default function Features() {
         </div>
       </div>
 
-      {/* Feature Comparison */}
       <FeatureComparison />
 
-      {/* CTA Section */}
       <div className="text-center mt-16">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">
           Ready to Upgrade?
@@ -90,9 +84,8 @@ export default function Features() {
           </Link>
         </div>
       </div>
-    </div>
 
-    <footer className="bg-gray-50 border-t border-gray-200 mt-16">
+      <footer className="bg-gray-50 border-t border-gray-200 mt-16">
         <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
@@ -115,5 +108,6 @@ export default function Features() {
           </div>
         </div>
       </footer>
+    </div>
   );
 }
