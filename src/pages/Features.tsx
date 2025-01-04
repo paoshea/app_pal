@@ -91,5 +91,29 @@ export default function Features() {
         </div>
       </div>
     </div>
+
+    <footer className="bg-gray-50 border-t border-gray-200 mt-16">
+        <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900">Product</h3>
+              <div className="mt-4 space-y-4">
+                <Link to="/features" className="text-sm text-gray-600 hover:text-gray-900 block">Features</Link>
+                <Link to="/dashboard" className="text-sm text-gray-600 hover:text-gray-900 block">Dashboard</Link>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900">Company</h3>
+              <div className="mt-4 space-y-4">
+                <Link to="/about" className="text-sm text-gray-600 hover:text-gray-900 block">About</Link>
+                <Link to="/contact" className="text-sm text-gray-600 hover:text-gray-900 block">Contact</Link>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 border-t border-gray-200 pt-8">
+            <p className="text-sm text-gray-600">&copy; {new Date().getFullYear()} App_Pal. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
   );
 }
