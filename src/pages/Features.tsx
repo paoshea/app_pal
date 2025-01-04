@@ -13,6 +13,8 @@ import FeatureCard from '../components/features/FeatureCard';
 import FeatureComparison from '../components/features/FeatureComparison';
 import DemoProjectCard from '../components/features/DemoProjectCard';
 
+import { Link } from 'react-router-dom';
+
 export default function Features() {
   const powerFeatures = [
     {
@@ -44,7 +46,8 @@ export default function Features() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       {/* Hero Section */}
-      <div className="text-center mb-16">
+      <div className="flex justify-between items-center mb-16">
+        <Link to="/" className="text-blue-600 hover:text-blue-700">← Back to Home</Link>
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
           Unlock the Full Potential of App_Pal
         </h1>
