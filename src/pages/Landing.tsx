@@ -12,10 +12,10 @@ export default function Landing() {
               <span className="ml-2 text-xl font-bold">App_Pal</span>
             </div>
             <div className="flex items-center space-x-4">
-              <button className="text-gray-600 hover:text-gray-900">Sign in</button>
-              <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+              <Link to="/dashboard" className="text-gray-600 hover:text-gray-900">Sign in</Link>
+              <Link to="/features" className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
                 Get Started
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -32,12 +32,12 @@ export default function Landing() {
             with powerful collaboration tools and integrated documentation.
           </p>
           <div className="flex justify-center space-x-4">
-            <button className="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center">
+            <Link to="/dashboard" className="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center">
               Start Free Trial <ArrowRight className="ml-2 w-4 h-4" />
-            </button>
-            <button className="px-6 py-3 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
-              Watch Demo
-            </button>
+            </Link>
+            <Link to="/features" className="px-6 py-3 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+              View Features
+            </Link>
           </div>
         </div>
 
@@ -82,6 +82,30 @@ export default function Landing() {
           </div>
         </div>
       </main>
+      
+      <footer className="bg-gray-50 border-t border-gray-200 mt-16">
+        <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900">Product</h3>
+              <div className="mt-4 space-y-4">
+                <Link to="/features" className="text-sm text-gray-600 hover:text-gray-900 block">Features</Link>
+                <Link to="/dashboard" className="text-sm text-gray-600 hover:text-gray-900 block">Dashboard</Link>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-gray-900">Company</h3>
+              <div className="mt-4 space-y-4">
+                <Link to="/about" className="text-sm text-gray-600 hover:text-gray-900 block">About</Link>
+                <Link to="/contact" className="text-sm text-gray-600 hover:text-gray-900 block">Contact</Link>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 border-t border-gray-200 pt-8">
+            <p className="text-sm text-gray-600">&copy; {new Date().getFullYear()} App_Pal. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
