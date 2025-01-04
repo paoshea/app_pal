@@ -7,7 +7,8 @@ import {
   Calendar,
   Lock,
   Sparkles,
-  Workflow
+  Workflow,
+  ArrowRight
 } from 'lucide-react';
 import FeatureCard from '../components/features/FeatureCard';
 import FeatureComparison from '../components/features/FeatureComparison';
