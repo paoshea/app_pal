@@ -9,6 +9,7 @@ import { lazy, Suspense } from 'react';
 const Landing = lazy(() => import('../pages/Landing'));
 const Features = lazy(() => import('../pages/Features'));
 const Dashboard = lazy(() => import('../pages/Dashboard'));
+const GuestDashboard = lazy(() => import('../pages/GuestDashboard'));
 const Register = lazy(() => import('../pages/Register'));
 const SignIn = lazy(() => import('../pages/SignIn'));
 const Settings = lazy(() => import('../pages/Settings'));
@@ -45,6 +46,7 @@ export default function AppRoutes() {
               <Settings />
             </ProtectedRoute>
           } />
+          <Route path="/guest/dashboard" element={<GuestDashboard />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
 

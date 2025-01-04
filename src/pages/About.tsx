@@ -57,8 +57,8 @@ export default function About() {
                   Go to Dashboard →
                 </Link>
               ) : (
-                <Link to="/register" className="text-blue-600 hover:text-blue-700">
-                  Create an Account →
+                <Link to="/guest/dashboard" className="text-blue-600 hover:text-blue-700">
+                  Go to Guest Dashboard →
                 </Link>
               )}
             </div>
