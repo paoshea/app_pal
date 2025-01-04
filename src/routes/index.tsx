@@ -24,9 +24,7 @@ export default function AppRoutes() {
       <Suspense fallback={<div>Loading...</div>}> {/* Added Suspense for lazy loading */}
         <Routes>
           {/* Public Routes */}
-          <Route path="/" element={
-            isAuthenticated ? <Navigate to="/dashboard" /> : <Landing />
-          } />
+          <Route path="/" element={<Landing />} />
           <Route path="/features" element={<Features />} />
           <Route path="/register" element={<Register />} />
           <Route path="/signin" element={<SignIn />} />
