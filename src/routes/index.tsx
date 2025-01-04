@@ -12,6 +12,8 @@ import Register from '../pages/Register';
 import SignIn from '../pages/SignIn';
 import Settings from '../pages/Settings';
 import NotFound from '../pages/NotFound';
+import About from '../pages/About'; // Added
+import Contact from '../pages/Contact'; // Added
 
 export default function AppRoutes() {
   const { isAuthenticated } = useAuthStore();
@@ -38,6 +40,8 @@ export default function AppRoutes() {
             <Settings />
           </ProtectedRoute>
         } />
+        <Route path="/about" element={<About />} /> {/* Added */}
+        <Route path="/contact" element={<Contact />} /> {/* Added */}
 
         {/* 404 Route */}
         <Route path="*" element={<NotFound />} />
