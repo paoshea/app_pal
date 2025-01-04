@@ -91,7 +91,7 @@ export default function Landing() {
               <h3 className="text-sm font-semibold text-gray-900">Product</h3>
               <div className="mt-4 space-y-4">
                 <Link to="/features" className="text-sm text-gray-600 hover:text-gray-900 block">Features</Link>
-                <Link to="/dashboard" className="text-sm text-gray-600 hover:text-gray-900 block">Dashboard</Link>
+                <Link to="/power/dashboard" className="text-sm text-gray-600 hover:text-gray-900 block">Enhanced Dashboard</Link>
               </div>
             </div>
             <div>
