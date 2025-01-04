@@ -13,8 +13,8 @@ export default function Landing() {
               <span className="ml-2 text-xl font-bold">App_Pal</span>
             </div>
             <div className="flex items-center space-x-4">
-              <Link to="/dashboard" className="text-gray-600 hover:text-gray-900">Sign in</Link>
-              <Link to="/features" className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
+              <Link to="/signin" className="text-gray-600 hover:text-gray-900">Sign in</Link>
+              <Link to="/register" className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
                 Get Started
               </Link>
             </div>
@@ -36,7 +36,7 @@ export default function Landing() {
             <Link to="/dashboard" className="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center">
               Start Free Trial <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
-            <Link to="/features" className="px-6 py-3 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200">
+            <Link to="/features" className="px-6 py-3 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
               View Features
             </Link>
           </div>

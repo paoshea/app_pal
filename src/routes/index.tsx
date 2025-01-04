@@ -22,6 +22,8 @@ export default function AppRoutes() {
           isAuthenticated ? <Navigate to="/dashboard" /> : <Landing />
         } />
         <Route path="/features" element={<Features />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/signin" element={<SignIn />} />
 
         {/* Protected Routes */}
         <Route path="/dashboard" element={

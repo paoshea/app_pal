@@ -83,9 +83,11 @@ export default function Features() {
         <p className="text-gray-600 mb-8">
           Join thousands of developers who have already enhanced their workflow
         </p>
-        <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium">
-          Upgrade Now
-        </button>
+        <div className="flex space-x-4 justify-center">
+          <Link to="/register" className="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center font-medium">
+            Start Free Trial <ArrowRight className="ml-2 w-4 h-4" />
+          </Link>
+        </div>
       </div>
     </div>
   );
