@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Box, Users, Zap, Shield } from 'lucide-react';
 
 export default function Landing() {
