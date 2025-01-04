@@ -25,9 +25,9 @@ export default function FeatureComparison() {
             <div className="text-sm font-medium text-gray-900">{feature.name}</div>
             <div className="text-center">
               {feature.guest ? (
-                <Check className="w-5 h-5 text-green-500 mx-auto" />
+                <Check className="w-5 h-5 text-emerald-600 mx-auto" />
               ) : (
-                <X className="w-5 h-5 text-gray-300 mx-auto" />
+                <X className="w-5 h-5 text-red-500 mx-auto" />
               )}
             </div>
             <div className="text-center">
