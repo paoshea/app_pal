@@ -1,3 +1,4 @@
+
 modules = ["nodejs-20", "web"]
 run = "npm run dev"
 
@@ -9,8 +10,12 @@ run = ["sh", "-c", "npm run dev"]
 
 [[ports]]
 localPort = 3000
-externalPort = 3000
+externalPort = 80
 
 [[ports]]
-localPort = 5173
-externalPort = 80
+localPort = 3001
+externalPort = 81
+
+[[ports]]
+localPort = 3002
+externalPort = 82
