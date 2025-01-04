@@ -65,6 +65,16 @@ export default function GuestDashboard() {
         </div>
       </div>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-6 mb-8 text-white">
+          <h2 className="text-xl font-semibold mb-2">Upgrade to Power User</h2>
+          <p className="mb-4">Get access to advanced features, unlimited projects, and priority support.</p>
+          <Link to="/register" className="inline-block px-4 py-2 bg-white text-blue-600 rounded-md font-medium hover:bg-blue-50 transition-colors">
+            Upgrade Now
+          </Link>
+        </div>
+      </div>
+
       <footer className="bg-white border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
