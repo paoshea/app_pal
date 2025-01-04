@@ -8,6 +8,8 @@ import ErrorBoundary from '../components/error/ErrorBoundary';
 import Landing from '../pages/Landing';
 import Features from '../pages/Features';
 import Dashboard from '../pages/Dashboard';
+import Register from '../pages/Register';
+import SignIn from '../pages/SignIn';
 import Settings from '../pages/Settings';
 import NotFound from '../pages/NotFound';
 
