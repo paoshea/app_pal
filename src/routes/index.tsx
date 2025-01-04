@@ -37,6 +37,11 @@ export default function AppRoutes() {
               <Dashboard />
             </ProtectedRoute>
           } />
+          <Route path="/power/dashboard" element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } />
           <Route path="/settings" element={
             <ProtectedRoute>
               <Settings />
