@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'sonner';
 
-export function ProjectDetails() {
+export default function ProjectDetails() {
   const { id } = useParams();
   const [tasks, setTasks] = useState([
     { id: 1, name: 'Setup project', priority: 'high', status: 'completed' },
