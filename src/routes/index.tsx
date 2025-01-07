@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Dashboard } from '../pages/Dashboard';
@@ -11,6 +10,7 @@ import ProtectedRoute from './ProtectedRoute';
 import { lazy, Suspense } from 'react';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
 import ErrorBoundary from '../components/error/ErrorBoundary';
+import ProjectDetails from '../pages/ProjectDetails'; // Added import
 
 const Landing = lazy(() => import('../pages/Landing'));
 const Features = lazy(() => import('../pages/Features'));
@@ -65,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: 'power/dashboard',
         element: <ProtectedRoute><Dashboard /></ProtectedRoute>
+      },
+      {
+        path: '/projects/:id', // Added project route
+        element: <ProtectedRoute><ProjectDetails /></ProtectedRoute> // Added project route with protection
       }
     ]
   },
