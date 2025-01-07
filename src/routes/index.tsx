@@ -10,7 +10,6 @@ import ProtectedRoute from './ProtectedRoute';
 import { lazy, Suspense } from 'react';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
 import ErrorBoundary from '../components/error/ErrorBoundary';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const Landing = lazy(() => import('../pages/Landing'));
 const Features = lazy(() => import('../pages/Features'));
