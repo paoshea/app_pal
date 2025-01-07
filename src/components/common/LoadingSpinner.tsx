@@ -9,4 +9,4 @@ function LoadingSpinner() {
   );
 }
 
-export { LoadingSpinner };
+export default LoadingSpinner;
