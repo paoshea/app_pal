@@ -1,10 +1,11 @@
 
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from '../components/Layout';
 import ErrorPage from '../pages/ErrorPage';
 import ProtectedRoute from './ProtectedRoute';
 import LoadingSpinner from '../components/common/LoadingSpinner';
+import { useAuthStore } from '../store/authStore';
 
 const Dashboard = lazy(() => import('../pages/Dashboard'));
 const Settings = lazy(() => import('../pages/Settings'));
@@ -27,52 +28,117 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Suspense fallback={<LoadingSpinner />}><Landing /></Suspense>,
-        index: true
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            {useAuthStore.getState().isAuthenticated ? 
+              <Navigate to="/dashboard" replace /> : 
+              <Landing />
+            }
+          </Suspense>
+        )
       },
       {
         path: '/dashboard',
-        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Dashboard /></Suspense></ProtectedRoute>
+        element: (
+          <ProtectedRoute>
+            <Suspense fallback={<LoadingSpinner />}>
+              <Dashboard />
+            </Suspense>
+          </ProtectedRoute>
+        )
       },
       {
-        path: '/projects',
-        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Projects /></Suspense></ProtectedRoute>
-      },
-      {
-        path: '/projects/:id',
-        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><ProjectDetails /></Suspense></ProtectedRoute>
+        path: 'projects',
+        children: [
+          {
+            path: '',
+            element: (
+              <ProtectedRoute>
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Projects />
+                </Suspense>
+              </ProtectedRoute>
+            )
+          },
+          {
+            path: ':id',
+            element: (
+              <ProtectedRoute>
+                <Suspense fallback={<LoadingSpinner />}>
+                  <ProjectDetails />
+                </Suspense>
+              </ProtectedRoute>
+            )
+          }
+        ]
       },
       {
         path: '/settings',
-        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Settings /></Suspense></ProtectedRoute>
+        element: (
+          <ProtectedRoute>
+            <Suspense fallback={<LoadingSpinner />}>
+              <Settings />
+            </Suspense>
+          </ProtectedRoute>
+        )
       },
       {
         path: '/projectideas',
-        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><ProjectIdeas /></Suspense></ProtectedRoute>
+        element: (
+          <ProtectedRoute>
+            <Suspense fallback={<LoadingSpinner />}>
+              <ProjectIdeas />
+            </Suspense>
+          </ProtectedRoute>
+        )
       },
       {
         path: '/guest',
-        element: <Suspense fallback={<LoadingSpinner />}><GuestDashboard /></Suspense>
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <GuestDashboard />
+          </Suspense>
+        )
       },
       {
         path: '/features',
-        element: <Suspense fallback={<LoadingSpinner />}><Features /></Suspense>
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <Features />
+          </Suspense>
+        )
       },
       {
         path: '/about',
-        element: <Suspense fallback={<LoadingSpinner />}><About /></Suspense>
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <About />
+          </Suspense>
+        )
       },
       {
         path: '/signin',
-        element: <Suspense fallback={<LoadingSpinner />}><SignIn /></Suspense>
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <SignIn />
+          </Suspense>
+        )
       },
       {
         path: '/register',
-        element: <Suspense fallback={<LoadingSpinner />}><Register /></Suspense>
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <Register />
+          </Suspense>
+        )
       },
       {
         path: '*',
-        element: <Suspense fallback={<LoadingSpinner />}><NotFound /></Suspense>
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <NotFound />
+          </Suspense>
+        )
       }
     ]
   }
