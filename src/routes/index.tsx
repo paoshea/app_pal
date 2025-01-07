@@ -12,7 +12,8 @@ import ErrorBoundary from '../components/error/ErrorBoundary';
 
 const Dashboard = lazy(() => import('../pages/Dashboard'));
 const Settings = lazy(() => import('../pages/Settings'));
-const Projects = lazy(() => import('../pages/ProjectDetails'));
+const Projects = lazy(() => import('../pages/Projects'));
+const ProjectDetails = lazy(() => import('../pages/ProjectDetails'));
 
 const Landing = lazy(() => import('../pages/Landing'));
 const Features = lazy(() => import('../pages/Features'));
@@ -68,7 +69,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/projects/:id',
-        element: <Suspense fallback={<LoadingSpinner />}><Projects /></Suspense>
+        element: <Suspense fallback={<LoadingSpinner />}><ProjectDetails /></Suspense>
       }
     ]
   },
