@@ -4,12 +4,13 @@ import { Dashboard } from '../pages/Dashboard';
 import { Contact } from '../pages/Contact';
 import { ErrorPage } from '../pages/ErrorPage';
 import { Register } from '../pages/Register';
-import Layout from '../components/Layout';
+import { Layout } from '../components/Layout';
 import { useAuthStore } from '../store/authStore';
 import ProtectedRoute from './ProtectedRoute';
 import { lazy, Suspense } from 'react';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
 import ErrorBoundary from '../components/error/ErrorBoundary';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const Landing = lazy(() => import('../pages/Landing'));
 const Features = lazy(() => import('../pages/Features'));
