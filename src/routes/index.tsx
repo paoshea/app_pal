@@ -7,16 +7,16 @@ import ErrorBoundary from '../components/error/ErrorBoundary';
 import { lazy, Suspense } from 'react';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 
-const Landing = lazy(() => import('../pages/Landing'));
-const Features = lazy(() => import('../pages/Features'));
-const Dashboard = lazy(() => import('../pages/Dashboard'));
-const GuestDashboard = lazy(() => import('../pages/GuestDashboard'));
-const Register = lazy(() => import('../pages/Register'));
-const SignIn = lazy(() => import('../pages/SignIn'));
-const Settings = lazy(() => import('../pages/Settings'));
-const NotFound = lazy(() => import('../pages/NotFound'));
-const About = lazy(() => import('../pages/About'));
-const Contact = lazy(() => import('../pages/Contact'));
+const Landing = lazy(() => import('../pages/Landing').then(module => ({ default: module.default })));
+const Features = lazy(() => import('../pages/Features').then(module => ({ default: module.default })));
+const Dashboard = lazy(() => import('../pages/Dashboard').then(module => ({ default: module.default })));
+const GuestDashboard = lazy(() => import('../pages/GuestDashboard').then(module => ({ default: module.default })));
+const Register = lazy(() => import('../pages/Register').then(module => ({ default: module.default })));
+const SignIn = lazy(() => import('../pages/SignIn').then(module => ({ default: module.default })));
+const Settings = lazy(() => import('../pages/Settings').then(module => ({ default: module.default })));
+const NotFound = lazy(() => import('../pages/NotFound').then(module => ({ default: module.default })));
+const About = lazy(() => import('../pages/About').then(module => ({ default: module.default })));
+const Contact = lazy(() => import('../pages/Contact').then(module => ({ default: module.default })));
 
 function AppRoutes() {
   const { isAuthenticated } = useAuthStore();
