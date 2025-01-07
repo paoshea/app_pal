@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BarChart, FolderKanban, Users, Calendar } from 'lucide-react';
+import { BarChart, FolderKanban, Users, Calendar, Lightbulb } from 'lucide-react';
 import ProjectDashboard from '../components/power/ProjectDashboard';
 
 const mockProjects = [

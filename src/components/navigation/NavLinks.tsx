@@ -33,6 +33,14 @@ export default function NavLinks({ className = '' }: { className?: string }) {
       </NavLink>
 
       <NavLink
+        to="/projectideas"
+        className={({ isActive }) => `${linkClass} ${isActive ? activeClass : ''}`}
+      >
+        <Lightbulb className="w-5 h-5 mr-3" />
+        Project Ideas
+      </NavLink>
+
+      <NavLink
         to="/settings"
         className={({ isActive }) => `${linkClass} ${isActive ? activeClass : ''}`}
       >
