@@ -9,7 +9,7 @@ export default function NavLinks({ className = '' }: { className?: string }) {
   return (
     <nav className={`space-y-1 ${className}`}>
       <NavLink
-        to="/"
+        to="/dashboard"
         className={({ isActive }) => `${linkClass} ${isActive ? activeClass : ''}`}
       >
         <Home className="w-5 h-5 mr-3" />

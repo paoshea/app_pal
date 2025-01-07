@@ -51,24 +51,23 @@ const router = createBrowserRouter([
     element: <GuestDashboard />
   },
   {
-    path: '/',
-    element: <Layout />,
+    element: <ProtectedRoute><Layout /></ProtectedRoute>,
     children: [
       {
-        path: 'dashboard',
-        element: <ProtectedRoute><Dashboard /></ProtectedRoute>
+        path: '/dashboard',
+        element: <Dashboard />
       },
       {
-        path: 'settings',
-        element: <ProtectedRoute><Settings /></ProtectedRoute>
+        path: '/settings',
+        element: <Settings />
       },
       {
-        path: 'power/dashboard',
-        element: <ProtectedRoute><Dashboard /></ProtectedRoute>
+        path: '/projects',
+        element: <Dashboard />
       },
       {
-        path: '/projects/:id', // Added project route
-        element: <ProtectedRoute><ProjectDetails /></ProtectedRoute> // Added project route with protection
+        path: '/projects/:id',
+        element: <ProjectDetails />
       }
     ]
   },
