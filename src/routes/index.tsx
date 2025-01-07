@@ -1,3 +1,4 @@
+
 import { createBrowserRouter } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from '../components/Layout';
@@ -30,13 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard',
-        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Dashboard /></Suspense></ProtectedRoute>,
-        children: [
-          {
-            path: '/dashboard/projectideas',
-            element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><ProjectIdeas /></Suspense></ProtectedRoute>
-          }
-        ]
+        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Dashboard /></Suspense></ProtectedRoute>
       },
       {
         path: '/projects',
@@ -49,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: '/settings',
         element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Settings /></Suspense></ProtectedRoute>
+      },
+      {
+        path: '/projectideas',
+        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><ProjectIdeas /></Suspense></ProtectedRoute>
       },
       {
         path: '/guest',
