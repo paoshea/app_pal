@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function SignIn() {
+function SignIn() {
   return (
     <div className="min-h-screen bg-gray-50">
       <nav className="p-4">
@@ -46,3 +46,5 @@ export default function SignIn() {
     </div>
   );
 }
+
+export default SignIn;

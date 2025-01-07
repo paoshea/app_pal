@@ -6,7 +6,7 @@ interface ErrorPageProps {
   error?: Error | null;
 }
 
-export default function ErrorPage({ error }: ErrorPageProps) {
+function ErrorPage({ error }: ErrorPageProps) {
   const navigate = useNavigate();
 
   return (
@@ -37,3 +37,5 @@ export default function ErrorPage({ error }: ErrorPageProps) {
     </div>
   );
 }
+
+export default ErrorPage;

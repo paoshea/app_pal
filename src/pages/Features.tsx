@@ -13,7 +13,7 @@ import FeatureCard from '../components/features/FeatureCard';
 import FeatureComparison from '../components/features/FeatureComparison';
 import DemoProjectCard from '../components/features/DemoProjectCard';
 
-export default function Features() {
+function Features() {
   const powerFeatures = [
     {
       title: "Advanced Project Management",
@@ -111,3 +111,5 @@ export default function Features() {
     </div>
   );
 }
+
+export default Features;

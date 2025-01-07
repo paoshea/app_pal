@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import { toast } from 'sonner';
 
-export default function Register() {
+function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -61,3 +61,5 @@ export default function Register() {
     </div>
   );
 }
+
+export default Register;

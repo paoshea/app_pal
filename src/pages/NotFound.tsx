@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FileQuestion } from 'lucide-react';
 
-export default function NotFound() {
+function NotFound() {
   const navigate = useNavigate();
 
   return (
@@ -25,3 +25,5 @@ export default function NotFound() {
     </div>
   );
 }
+
+export default NotFound;
