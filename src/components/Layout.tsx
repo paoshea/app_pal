@@ -6,8 +6,7 @@ import MobileNav from './layout/MobileNav';
 import NavLinks from './navigation/NavLinks';
 import BottomNav from './mobile/BottomNav';
 import Logo from './brand/Logo';
-import { useAuthStore } from '../store/authStore'; 
-import Lightbulb from './Lightbulb'; // Added import for Lightbulb
+import { useAuthStore } from '../store/authStore';
 
 
 interface LayoutProps {
