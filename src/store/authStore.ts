@@ -1,4 +1,3 @@
-
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { AuthState, User } from '../types/auth';
@@ -9,6 +8,7 @@ interface AuthStore extends AuthState {
   register: (email: string, password: string, name: string) => Promise<void>;
   logout: () => void;
   checkSession: () => void;
+  signOut: () => void;
 }
 
 export const useAuthStore = create<AuthStore>()(
@@ -26,7 +26,7 @@ export const useAuthStore = create<AuthStore>()(
           // Mock token for demo
           const token = 'mock_jwt_token';
           setToken(token);
-          
+
           const mockUser: User = {
             id: '1',
             email: sanitizedEmail,
@@ -35,7 +35,7 @@ export const useAuthStore = create<AuthStore>()(
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
           };
-          
+
           set({ user: mockUser, isAuthenticated: true, error: null });
         } catch (error) {
           set({ error: 'Login failed' });
@@ -49,10 +49,10 @@ export const useAuthStore = create<AuthStore>()(
           set({ isLoading: true, error: null });
           const sanitizedEmail = sanitizeInput(email);
           const sanitizedName = sanitizeInput(name);
-          
+
           // Simulate API call delay
           await new Promise(resolve => setTimeout(resolve, 1000));
-          
+
           const mockUser: User = {
             id: '1',
             email: sanitizedEmail,
@@ -61,7 +61,7 @@ export const useAuthStore = create<AuthStore>()(
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
           };
-          
+
           setToken('mock_jwt_token');
           set({ user: mockUser, isAuthenticated: true, error: null });
           return mockUser;
@@ -84,6 +84,7 @@ export const useAuthStore = create<AuthStore>()(
           set({ user: null, isAuthenticated: false });
         }
       },
+      signOut: () => set({ isAuthenticated: false, user: null }),
     }),
     {
       name: 'auth-storage',
