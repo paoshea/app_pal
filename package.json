@@ -4,6 +4,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "browserslist": [
+    "last 2 versions",
+    "> 1%"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
