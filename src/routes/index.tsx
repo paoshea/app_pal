@@ -14,29 +14,6 @@ const Dashboard = lazy(() => import('../pages/Dashboard'));
 const Settings = lazy(() => import('../pages/Settings'));
 const Projects = lazy(() => import('../pages/Projects'));
 const ProjectDetails = lazy(() => import('../pages/ProjectDetails'));
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: '/dashboard',
-        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Dashboard /></Suspense></ProtectedRoute>
-      },
-      {
-        path: '/projects',
-        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Projects /></Suspense></ProtectedRoute>
-      },
-      {
-        path: '/settings',
-        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Settings /></Suspense></ProtectedRoute>
-      }
-    ]
-  }
-]);
-
 const Landing = lazy(() => import('../pages/Landing'));
 const Features = lazy(() => import('../pages/Features'));
 const GuestDashboard = lazy(() => import('../pages/GuestDashboard'));
