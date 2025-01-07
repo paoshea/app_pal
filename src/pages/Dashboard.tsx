@@ -44,6 +44,12 @@ export default function Dashboard() {
           <Plus className="w-5 h-5 mr-2" />
           New Project
         </Link>
+        <button
+          onClick={() => useAuthStore.getState().logout()}
+          className="ml-4 px-4 py-2 text-red-600 border border-red-600 rounded-md hover:bg-red-50"
+        >
+          Sign Out
+        </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
