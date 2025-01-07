@@ -1,10 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Home, Layout, Settings } from 'lucide-react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { Home, FolderKanban, LogOut, Settings } from 'lucide-react';
+import { useAuthStore } from '../../store/authStore';
 
 export default function NavLinks({ className = '' }: { className?: string }) {
   const linkClass = "flex items-center px-3 py-2 text-gray-700 rounded-md hover:bg-gray-100";
   const activeClass = "bg-gray-100";
+  const navigate = useNavigate();
+  const { signOut } = useAuthStore();
+
+  const handleSignOut = () => {
+    signOut();
+    navigate('/');
+  };
 
   return (
     <nav className={`space-y-1 ${className}`}>
@@ -17,11 +25,11 @@ export default function NavLinks({ className = '' }: { className?: string }) {
       </NavLink>
 
       <NavLink
-        to="/features"
+        to="/projects"
         className={({ isActive }) => `${linkClass} ${isActive ? activeClass : ''}`}
       >
-        <Layout className="w-5 h-5 mr-3" />
-        Features
+        <FolderKanban className="w-5 h-5 mr-3" />
+        Projects
       </NavLink>
 
       <NavLink
@@ -31,6 +39,14 @@ export default function NavLinks({ className = '' }: { className?: string }) {
         <Settings className="w-5 h-5 mr-3" />
         Settings
       </NavLink>
+
+      <button 
+        onClick={handleSignOut}
+        className={`${linkClass} w-full text-left text-red-600 hover:bg-red-50`}
+      >
+        <LogOut className="w-5 h-5 mr-3" />
+        Sign Out
+      </button>
     </nav>
   );
 }
