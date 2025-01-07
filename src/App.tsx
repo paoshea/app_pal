@@ -3,7 +3,7 @@ import React from 'react';
 import AppRoutes from './routes';
 import { Toaster } from 'sonner';
 
-function App() {
+export default function App() {
   return (
     <>
       <AppRoutes />
@@ -11,5 +11,3 @@ function App() {
     </>
   );
 }
-
-export { App };
