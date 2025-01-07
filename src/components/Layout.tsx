@@ -60,19 +60,8 @@ function Layout({ children }: LayoutProps) {
 export default Layout;
 
 
-// Dummy components and function for compilation - replace with your actual implementations
-
+// Helper function for route validation
 const isPublicRoute = (path:string) => path === '/';
-
-function NavLinks(props:any) {
-  return (
-    <ul>
-      <li><Link to="/dashboard">Dashboard</Link></li>
-      <li><Link to="/projectideas">ProjectIdeas</Link></li> {/* Added ProjectIdeas link */}
-      {/* ... other links */}
-    </ul>
-  );
-}
 
 function Header(props:any) { return <div>Header</div> }
 function MobileNav(props:any) { return <div>MobileNav</div> }
