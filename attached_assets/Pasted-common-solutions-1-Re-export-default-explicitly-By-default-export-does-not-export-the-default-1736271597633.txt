@@ -1,0 +1,72 @@
+common solutions:
+
+1. Re-export default explicitly
+
+By default, export * does not export the default export from a module. You need to explicitly export it.
+
+Example:
+// Original file: src/components/Button.tsx
+export default function Button() {
+  return <button>Click Me!</button>;
+}
+
+// Re-export file: index.ts
+export * from './Button'; // This won't export the default
+export { default as Button } from './Button'; // Explicitly export default
+2. Ensure Consistent Import Usage
+
+Make sure you're not trying to use star (*) imports for default exports. Use named imports or direct default imports instead:
+
+Example:
+// Incorrect (with star import):
+import * as Button from './Button';
+
+// Correct:
+import Button from './Button';
+3. Avoid Exporting Entire Files in Some Cases
+
+If you're exporting everything in an index file and running into issues, try exporting modules explicitly.
+
+Example:
+Instead of:
+
+// index.ts
+export * from './Button';
+export * from './Input';
+Use:
+
+// index.ts
+export { Button } from './Button';
+export { Input } from './Input';
+4. Check TypeScript Configuration (tsconfig.json)
+
+Ensure the following settings are correct:
+
+esModuleInterop should be set to true for compatibility with default imports and exports.
+Example tsconfig.json:
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  }
+}
+5. CommonJS vs ES Modules Issues
+
+Ensure the module types align. For example:
+
+If you’re using require(), ensure it's a CommonJS module.
+If you’re using import/export, make sure it's set up as an ES module.
+6. Debug Imports and Re-Exports
+
+Check whether you’re accidentally doing something like:
+
+export * from './moduleA';
+export { default } from './moduleB';
+The above can sometimes confuse bundlers. Instead, structure the exports explicitly to avoid this ambiguity.
+
+Quick Fix Recap:
+Explicitly re-export defaults.
+Avoid using export * when you need default exports.
+Ensure tsconfig.json has esModuleInterop: true.
+Use direct imports (import Button from) instead of * imports.
+Match CommonJS vs ES module formats consistently.
