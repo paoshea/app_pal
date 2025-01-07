@@ -6,8 +6,9 @@ import ProtectedRoute from './ProtectedRoute';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 
 const Dashboard = lazy(() => import('../pages/Dashboard'));
-const Projects = lazy(() => import('../pages/Projects'));
 const Settings = lazy(() => import('../pages/Settings'));
+const Projects = lazy(() => import('../pages/Projects'));
+const ProjectIdeas = lazy(() => import('../pages/ProjectIdeas'));
 const ProjectDetails = lazy(() => import('../pages/ProjectDetails'));
 const Landing = lazy(() => import('../pages/Landing'));
 const Features = lazy(() => import('../pages/Features'));
@@ -29,7 +30,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard',
-        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Dashboard /></Suspense></ProtectedRoute>
+        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Dashboard /></Suspense></ProtectedRoute>,
+        children: [
+          {
+            path: '/dashboard/projectideas',
+            element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><ProjectIdeas /></Suspense></ProtectedRoute>
+          }
+        ]
       },
       {
         path: '/projects',
