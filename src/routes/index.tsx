@@ -1,89 +1,74 @@
-import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Contact } from '../pages/Contact';
-import { ErrorPage } from '../pages/ErrorPage';
-import { Register } from '../pages/Register';
-import { Layout } from '../components/Layout';
-import { useAuthStore } from '../store/authStore';
-import ProtectedRoute from './ProtectedRoute';
+import { createBrowserRouter } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import { LoadingSpinner } from '../components/common/LoadingSpinner';
-import ErrorBoundary from '../components/error/ErrorBoundary';
+import Layout from '../components/Layout';
+import ErrorPage from '../pages/ErrorPage';
+import ProtectedRoute from './ProtectedRoute';
+import LoadingSpinner from '../components/common/LoadingSpinner';
 
 const Dashboard = lazy(() => import('../pages/Dashboard'));
-const Settings = lazy(() => import('../pages/Settings'));
 const Projects = lazy(() => import('../pages/Projects'));
+const Settings = lazy(() => import('../pages/Settings'));
 const ProjectDetails = lazy(() => import('../pages/ProjectDetails'));
 const Landing = lazy(() => import('../pages/Landing'));
 const Features = lazy(() => import('../pages/Features'));
 const GuestDashboard = lazy(() => import('../pages/GuestDashboard'));
 const SignIn = lazy(() => import('../pages/SignIn'));
-const NotFound = lazy(() => import('../pages/NotFound'));
+const Register = lazy(() => import('../pages/Register'));
 const About = lazy(() => import('../pages/About'));
+const NotFound = lazy(() => import('../pages/NotFound'));
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Landing />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: '/features',
-    element: <Features />
-  },
-  {
-    path: '/about',
-    element: <About />
-  },
-  {
-    path: '/contact',
-    element: <Contact />
-  },
-  {
-    path: '/signin',
-    element: <SignIn />
-  },
-  {
-    path: '/register',
-    element: <Register />
-  },
-  {
-    path: '/guest/dashboard',
-    element: <GuestDashboard />
-  },
-  {
-    element: <ProtectedRoute><Layout /></ProtectedRoute>,
+    element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: '/dashboard',
-        element: <Suspense fallback={<LoadingSpinner />}><Dashboard /></Suspense>
+        path: '/',
+        element: <Suspense fallback={<LoadingSpinner />}><Landing /></Suspense>
       },
       {
-        path: '/settings',
-        element: <Suspense fallback={<LoadingSpinner />}><Settings /></Suspense>
+        path: '/dashboard',
+        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Dashboard /></Suspense></ProtectedRoute>
       },
       {
         path: '/projects',
-        element: <Suspense fallback={<LoadingSpinner />}><Projects /></Suspense>
+        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Projects /></Suspense></ProtectedRoute>
       },
       {
         path: '/projects/:id',
-        element: <Suspense fallback={<LoadingSpinner />}><ProjectDetails /></Suspense>
+        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><ProjectDetails /></Suspense></ProtectedRoute>
+      },
+      {
+        path: '/settings',
+        element: <ProtectedRoute><Suspense fallback={<LoadingSpinner />}><Settings /></Suspense></ProtectedRoute>
+      },
+      {
+        path: '/guest',
+        element: <Suspense fallback={<LoadingSpinner />}><GuestDashboard /></Suspense>
+      },
+      {
+        path: '/features',
+        element: <Suspense fallback={<LoadingSpinner />}><Features /></Suspense>
+      },
+      {
+        path: '/about',
+        element: <Suspense fallback={<LoadingSpinner />}><About /></Suspense>
+      },
+      {
+        path: '/signin',
+        element: <Suspense fallback={<LoadingSpinner />}><SignIn /></Suspense>
+      },
+      {
+        path: '/register',
+        element: <Suspense fallback={<LoadingSpinner />}><Register /></Suspense>
+      },
+      {
+        path: '*',
+        element: <Suspense fallback={<LoadingSpinner />}><NotFound /></Suspense>
       }
     ]
-  },
-  {
-    path: "*",
-    element: <NotFound />
   }
 ]);
 
-function AppRoutes() {
-  return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <RouterProvider router={router} />
-    </Suspense>
-  );
-}
-
-export default AppRoutes;
+export default router;

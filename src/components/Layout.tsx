@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Added useNavigate
 import { getViewportHeight } from '../utils/mobileUtils';
 import Header from './layout/Header';
 import MobileNav from './layout/MobileNav';
 import NavLinks from './navigation/NavLinks';
 import BottomNav from './mobile/BottomNav';
 import Logo from './brand/Logo';
+import { useAuthStore } from '../store/authStore'; // Added useAuthStore
+
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -13,6 +15,13 @@ interface LayoutProps {
 
 function Layout({ children }: LayoutProps) {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const { logout } = useAuthStore(); // Added logout function
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    logout();
+    navigate('/');
+  };
 
   return (
     <div className="min-h-screen bg-gray-50" style={{ minHeight: getViewportHeight() }}>
@@ -31,7 +40,7 @@ function Layout({ children }: LayoutProps) {
       </aside>
 
       <main className="lg:pl-64 pb-16 lg:pb-0">
-        <Header onMenuClick={() => setIsMobileNavOpen(true)} />
+        <Header onMenuClick={() => setIsMobileNavOpen(true)} onSignOut={handleSignOut} /> {/* Added onSignOut prop */}
         <div className="p-4 lg:p-6">{children}</div>
       </main>
 
