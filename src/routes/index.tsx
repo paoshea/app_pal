@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Dashboard } from '../pages/Dashboard';
@@ -19,59 +20,57 @@ const Settings = lazy(() => import('../pages/Settings'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 const About = lazy(() => import('../pages/About'));
 
-
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <Landing />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: '/features',
+    element: <Features />
+  },
+  {
+    path: '/about',
+    element: <About />
+  },
+  {
+    path: '/contact',
+    element: <Contact />
+  },
+  {
+    path: '/signin',
+    element: <SignIn />
+  },
+  {
+    path: '/register',
+    element: <Register />
+  },
+  {
+    path: '/guest/dashboard',
+    element: <GuestDashboard />
+  },
+  {
+    path: '/',
     element: <Layout />,
-    errorElement: <ErrorPage />,
     children: [
       {
         path: 'dashboard',
-        element: <Dashboard />
-      },
-      {
-        path: 'contact',
-        element: <Contact />
-      },
-      {
-        path: 'register',
-        element: <Register />
-      },
-      {
-        path: '/',
-        element: <Landing />
-      },
-      {
-        path: '/features',
-        element: <Features />
-      },
-      {
-        path: '/signin',
-        element: <SignIn />
-      },
-      {
-        path: '/about',
-        element: <About />
-      },
-      {
-        path: '/guest/dashboard',
-        element: <GuestDashboard />
-      },
-      {
-        path: '/settings',
-        element: <ProtectedRoute><Settings /></ProtectedRoute>
-      },
-      {
-        path: '/power/dashboard',
         element: <ProtectedRoute><Dashboard /></ProtectedRoute>
       },
       {
-        path: "*",
-        element: <NotFound />
+        path: 'settings',
+        element: <ProtectedRoute><Settings /></ProtectedRoute>
+      },
+      {
+        path: 'power/dashboard',
+        element: <ProtectedRoute><Dashboard /></ProtectedRoute>
       }
-
     ]
+  },
+  {
+    path: "*",
+    element: <NotFound />
   }
 ]);
 
