@@ -1,3 +1,25 @@
+
+import { ErrorInfo } from 'react';
+import { create } from 'zustand';
+
+export type ToastType = 'success' | 'error' | 'info';
+
+interface ToastState {
+  message: string;
+  type: ToastType;
+  isVisible: boolean;
+  showToast: (message: string, type: ToastType) => void;
+  hideToast: () => void;
+}
+
+export const useToastStore = create<ToastState>((set) => ({
+  message: '',
+  type: 'info',
+  isVisible: false,
+  showToast: (message, type) => set({ message, type, isVisible: true }),
+  hideToast: () => set({ isVisible: false })
+}));
+
 type ErrorSeverity = 'low' | 'medium' | 'high' | 'critical';
 
 interface ErrorReport {
@@ -78,16 +100,14 @@ class ErrorReporting {
 
 export const errorReporting = ErrorReporting.getInstance();
 
-import { ErrorInfo } from 'react';
-
 export function reportError(error: Error, errorInfo?: ErrorInfo) {
-  // Log to console in development
+  const { showToast } = useToastStore.getState();
+  
   if (process.env.NODE_ENV === 'development') {
     console.error('Error:', error);
     console.error('Error Info:', errorInfo);
   }
 
-  // In production, you could send to an error reporting service
-  // For now, we'll just log to console
-  console.error(error);
+  errorReporting.logError(error, 'high');
+  showToast(error.message || 'An unexpected error occurred', 'error');
 }
