@@ -1,10 +1,10 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Dashboard } from '../pages/Dashboard';
 import { Contact } from '../pages/Contact';
 import { ErrorPage } from '../pages/ErrorPage';
 import { Register } from '../pages/Register';
-import { Layout } from '../components/Layout';
+import Layout from '../components/Layout';
 import { useAuthStore } from '../store/authStore';
 import ProtectedRoute from './ProtectedRoute';
 import { lazy, Suspense } from 'react';
