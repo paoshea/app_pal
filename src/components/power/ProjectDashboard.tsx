@@ -2,6 +2,8 @@ import React from 'react';
 import { Project } from '../../types';
 import TechStackBadge from './TechStackBadge';
 import { BarChart, Calendar, Users, GitBranch } from 'lucide-react';
+import { toast } from 'sonner';
+import { connectDB } from '../../utils/db';
 
 interface ProjectDashboardProps {
   projects: Project[];
