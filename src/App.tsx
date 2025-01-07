@@ -22,5 +22,4 @@ function App() {
   );
 }
 
-const AppComponent = App;
-export default AppComponent;
+export default App;
