@@ -38,4 +38,4 @@ function ErrorPage({ error }: ErrorPageProps) {
   );
 }
 
-export default ErrorPage;
+export { ErrorPage };

@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 function Settings() {
@@ -11,7 +10,7 @@ function Settings() {
             Manage your account and preferences
           </p>
         </div>
-        
+
         <div className="bg-white shadow rounded-lg p-6">
           <h3 className="text-lg font-medium text-gray-900 mb-4">Account Settings</h3>
           <div className="space-y-4">

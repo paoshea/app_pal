@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
@@ -62,4 +61,4 @@ function Register() {
   );
 }
 
-export default Register;
+export {Register};

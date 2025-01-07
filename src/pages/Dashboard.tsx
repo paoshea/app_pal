@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BarChart, Users, GitBranch, Calendar, Zap, Code, CheckCircle } from 'lucide-react';
 import ProjectDashboard from '../components/power/ProjectDashboard';
@@ -64,7 +63,7 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        
+
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <div className="flex items-center">
             <div className="p-2 bg-green-100 rounded-lg">
@@ -106,7 +105,7 @@ function Dashboard() {
         <div className="lg:col-span-2">
           <ProjectDashboard projects={mockProjects} />
         </div>
-        
+
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <h2 className="text-lg font-semibold mb-4">Recent Activity</h2>
           <div className="space-y-4">
