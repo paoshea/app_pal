@@ -59,29 +59,5 @@ function Layout({ children }: LayoutProps) {
 
 export default Layout;
 
-
 // Helper function for route validation
 const isPublicRoute = (path:string) => path === '/';
-
-function Header(props:any) { return <div>Header</div> }
-function MobileNav(props:any) { return <div>MobileNav</div> }
-function BottomNav() { return <div>BottomNav</div> }
-function Logo(props:any) { return <div>Logo</div> }
-
-
-// Dummy Dashboard Component
-function Dashboard() {
-  return (
-    <div>
-      <h1>Dashboard</h1>
-      <Lightbulb /> {/* Added Lightbulb component */}
-    </div>
-  );
-}
-
-//Placeholder for Lightbulb component - Replace with actual implementation
-function Lightbulb() {
-  return <div>💡 This is a lightbulb!</div>;
-}
-
-export { Dashboard }; // Export Dashboard
