@@ -1,6 +1,5 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Dashboard } from '../pages/Dashboard';
 import { Contact } from '../pages/Contact';
 import { ErrorPage } from '../pages/ErrorPage';
 import { Register } from '../pages/Register';
@@ -10,7 +9,10 @@ import ProtectedRoute from './ProtectedRoute';
 import { lazy, Suspense } from 'react';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
 import ErrorBoundary from '../components/error/ErrorBoundary';
-import ProjectDetails from '../pages/ProjectDetails'; // Added import
+
+const Dashboard = lazy(() => import('../pages/Dashboard'));
+const Settings = lazy(() => import('../pages/Settings'));
+const ProjectDetails = lazy(() => import('../pages/ProjectDetails')); // Added import
 
 const Landing = lazy(() => import('../pages/Landing'));
 const Features = lazy(() => import('../pages/Features'));

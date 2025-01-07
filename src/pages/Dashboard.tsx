@@ -42,7 +42,7 @@ const recentActivity = [
   { id: 3, action: 'Added documentation', project: 'Mobile Banking App', user: 'Chris L.', time: '1 day ago' }
 ];
 
-export function Dashboard() {
+export default function Dashboard() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
