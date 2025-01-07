@@ -46,9 +46,12 @@ export const useAuthStore = create<AuthStore>()(
 
       register: async (email: string, password: string, name: string) => {
         try {
-          set({ isLoading: true });
+          set({ isLoading: true, error: null });
           const sanitizedEmail = sanitizeInput(email);
           const sanitizedName = sanitizeInput(name);
+          
+          // Simulate API call delay
+          await new Promise(resolve => setTimeout(resolve, 1000));
           
           const mockUser: User = {
             id: '1',
@@ -61,8 +64,10 @@ export const useAuthStore = create<AuthStore>()(
           
           setToken('mock_jwt_token');
           set({ user: mockUser, isAuthenticated: true, error: null });
+          return mockUser;
         } catch (error) {
-          set({ error: 'Registration failed' });
+          set({ error: 'Registration failed', isAuthenticated: false });
+          throw error;
         } finally {
           set({ isLoading: false });
         }

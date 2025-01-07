@@ -9,11 +9,17 @@ function Register() {
   const navigate = useNavigate();
   const register = useAuthStore(state => state.register);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    register(email, password, email.split('@')[0]);
-    toast.success('Registration successful!');
-    navigate('/dashboard');
+    try {
+      await register(email, password, email.split('@')[0]);
+      toast.success('Registration successful! Redirecting to dashboard...');
+      setTimeout(() => {
+        navigate('/dashboard', { replace: true });
+      }, 1500);
+    } catch (error) {
+      toast.error('Registration failed. Please try again.');
+    }
   };
 
   return (
