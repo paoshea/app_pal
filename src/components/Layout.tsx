@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getViewportHeight } from '../utils/mobileUtils';
 import Header from './layout/Header';
 import MobileNav from './layout/MobileNav';
 import NavLinks from './navigation/NavLinks';
