@@ -1,11 +1,12 @@
+
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import ProtectedRoute from './ProtectedRoute';
 import ErrorBoundary from '../components/error/ErrorBoundary';
 import { lazy, Suspense } from 'react';
+import LoadingSpinner from '../components/common/LoadingSpinner';
 
-// Pages
 const Landing = lazy(() => import('../pages/Landing'));
 const Features = lazy(() => import('../pages/Features'));
 const Dashboard = lazy(() => import('../pages/Dashboard'));
@@ -22,33 +23,42 @@ export default function AppRoutes() {
 
   return (
     <ErrorBoundary>
-      <Suspense fallback={<div>Loading...</div>}> {/* Added Suspense for lazy loading */}
+      <Suspense fallback={<LoadingSpinner />}>
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Landing />} />
           <Route path="/features" element={<Features />} />
           <Route path="/register" element={<Register />} />
           <Route path="/signin" element={<SignIn />} />
-
-          {/* Protected Routes */}
-          <Route path="/dashboard" element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          } />
-          <Route path="/power/dashboard" element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          } />
-          <Route path="/settings" element={
-            <ProtectedRoute>
-              <Settings />
-            </ProtectedRoute>
-          } />
-          <Route path="/guest/dashboard" element={<GuestDashboard />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/guest/dashboard" element={<GuestDashboard />} />
+
+          {/* Protected Routes */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/power/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
+          />
 
           {/* 404 Route */}
           <Route path="*" element={<NotFound />} />

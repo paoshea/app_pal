@@ -49,7 +49,7 @@ class ErrorReporting {
     try {
       const stored = localStorage.getItem(this.storageKey);
       const errors: ErrorReport[] = stored ? JSON.parse(stored) : [];
-      
+
       errors.unshift(errorReport);
       if (errors.length > this.maxStoredErrors) {
         errors.pop();
@@ -77,3 +77,17 @@ class ErrorReporting {
 }
 
 export const errorReporting = ErrorReporting.getInstance();
+
+import { ErrorInfo } from 'react';
+
+export function reportError(error: Error, errorInfo?: ErrorInfo) {
+  // Log to console in development
+  if (process.env.NODE_ENV === 'development') {
+    console.error('Error:', error);
+    console.error('Error Info:', errorInfo);
+  }
+
+  // In production, you could send to an error reporting service
+  // For now, we'll just log to console
+  console.error(error);
+}
