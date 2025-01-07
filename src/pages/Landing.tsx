@@ -33,7 +33,7 @@ function Landing() {
             with powerful collaboration tools and integrated documentation.
           </p>
           <div className="flex justify-center space-x-4">
-            <Link to="/guest/dashboard" className="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center">
+            <Link to="/register" className="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center">
               Start Free Trial <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
             <Link to="/features" className="px-6 py-3 text-white bg-blue-500 rounded-lg hover:bg-blue-600">
