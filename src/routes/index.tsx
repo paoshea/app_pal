@@ -18,7 +18,7 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 const About = lazy(() => import('../pages/About'));
 const Contact = lazy(() => import('../pages/Contact'));
 
-export default function AppRoutes() {
+function AppRoutes() {
   const { isAuthenticated } = useAuthStore();
 
   return (
@@ -67,3 +67,4 @@ export default function AppRoutes() {
     </ErrorBoundary>
   );
 }
+export default AppRoutes;
