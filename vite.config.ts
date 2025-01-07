@@ -2,7 +2,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig({
+const config = defineConfig({
   plugins: [react()],
   build: {
     target: 'esnext',
@@ -25,3 +25,5 @@ export default defineConfig({
     port: 3000
   }
 });
+
+export default config;
