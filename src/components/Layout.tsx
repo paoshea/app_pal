@@ -14,7 +14,7 @@ export default function Layout({ children }: LayoutProps) {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50" style={{ minHeight: getViewportHeight() }}>
       <MobileNav 
         isOpen={isMobileNavOpen}
         onClose={() => setIsMobileNavOpen(false)}

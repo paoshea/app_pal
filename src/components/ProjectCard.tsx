@@ -15,7 +15,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const updatedTime = getRelativeTime(project.updatedAt);
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+    <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow touch-manipulation active:bg-gray-50">
       <div className="flex items-start justify-between">
         <div className="min-w-0 flex-1">
           <h3 className="text-lg font-semibold text-gray-900 truncate">{project.name}</h3>
@@ -25,7 +25,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <Star className={`w-5 h-5 ${project.priority > 2 ? 'text-yellow-400' : 'text-gray-300'}`} />
         </div>
       </div>
-      
+
       <div className="mt-4 flex items-center space-x-2">
         <Badge 
           variant={project.priority === 3 ? 'error' : project.priority === 2 ? 'warning' : 'success'}

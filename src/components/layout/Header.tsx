@@ -15,10 +15,10 @@ export default function Header({ onMenuClick }: HeaderProps) {
       <div className="flex items-center justify-between h-full px-4 lg:px-6">
         <div className="flex items-center">
           <IconButton
-            icon={<Menu className="w-5 h-5" />}
+            icon={<Menu className="w-7 h-7" />}
             variant="ghost"
             onClick={onMenuClick}
-            className="lg:hidden mr-3"
+            className="lg:hidden mr-3 p-3 -m-3 touch-manipulation" // Modified for larger touch target and touch-manipulation class
           />
           <Link to="/" className="lg:hidden">
             <Logo variant="minimal" size="sm" />
