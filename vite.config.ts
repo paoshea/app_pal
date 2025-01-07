@@ -4,33 +4,24 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    host: '0.0.0.0',
-    port: 3000,
-    strictPort: false, // Allows fallback to next available port
-    hmr: {
-      clientPort: 443,
-      host: '0.0.0.0'
-    }
-  },
   build: {
     target: 'esnext',
+    modulePreload: true,
     minify: 'terser',
     cssMinify: true,
     rollupOptions: {
       output: {
+        format: 'esm',
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
           ui: ['lucide-react'],
-          state: ['zustand'],
-          dnd: ['@hello-pangea/dnd']
+          state: ['zustand']
         }
       }
-    },
-    chunkSizeWarningLimit: 1000
+    }
   },
-  optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', 'zustand'],
-    exclude: ['lucide-react']
+  server: {
+    host: '0.0.0.0',
+    port: 3000
   }
 });
