@@ -22,4 +22,5 @@ function App() {
   );
 }
 
-export default App;
+const AppComponent = App;
+export default AppComponent;

@@ -1,7 +1,5 @@
 
-const globals = require('globals');
-
-module.exports = {
+const config = {
   root: true,
   env: {
     browser: true,
@@ -23,3 +21,5 @@ module.exports = {
     ],
   },
 };
+
+module.exports = config;
