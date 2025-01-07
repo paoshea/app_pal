@@ -20,7 +20,7 @@ const NotFound = lazy(() => import('../pages/NotFound').then(module => ({ defaul
 const About = lazy(() => import('../pages/About').then(module => ({ default: module.default })));
 
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
@@ -74,3 +74,13 @@ export const router = createBrowserRouter([
     ]
   }
 ]);
+
+function AppRoutes() {
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
+}
+
+export default AppRoutes;
