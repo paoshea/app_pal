@@ -18,7 +18,6 @@ const Landing = lazy(() => import('../pages/Landing'));
 const Features = lazy(() => import('../pages/Features'));
 const GuestDashboard = lazy(() => import('../pages/GuestDashboard'));
 const SignIn = lazy(() => import('../pages/SignIn'));
-const Settings = lazy(() => import('../pages/Settings'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 const About = lazy(() => import('../pages/About'));
 
