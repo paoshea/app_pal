@@ -1,37 +1,50 @@
+
+import { jwtDecode } from 'jwt-decode';
+
+const TOKEN_KEY = 'auth_token';
+const SESSION_TIMEOUT = 30 * 60 * 1000; // 30 minutes
+
 export const sanitizeInput = (input: string): string => {
   return input
     .replace(/[<>]/g, '') // Remove < and >
+    .replace(/[&]/g, '&amp;') // Escape ampersands
+    .replace(/["]/g, '&quot;') // Escape quotes
+    .replace(/[']/g, '&#x27;') // Escape single quotes
+    .replace(/[/]/g, '&#x2F;') // Escape forward slashes
     .trim();
 };
 
-export const validateInput = (input: string, maxLength: number = 1000): boolean => {
-  return input.length > 0 && input.length <= maxLength;
+export const setToken = (token: string): void => {
+  localStorage.setItem(TOKEN_KEY, token);
+  localStorage.setItem('token_timestamp', Date.now().toString());
 };
 
-export const generateCSRFToken = (): string => {
-  return Array.from(crypto.getRandomValues(new Uint8Array(32)))
-    .map(b => b.toString(16).padStart(2, '0'))
-    .join('');
+export const getToken = (): string | null => {
+  const token = localStorage.getItem(TOKEN_KEY);
+  const timestamp = localStorage.getItem('token_timestamp');
+  
+  if (!token || !timestamp) {
+    return null;
+  }
+
+  if (Date.now() - parseInt(timestamp) > SESSION_TIMEOUT) {
+    clearToken();
+    return null;
+  }
+
+  return token;
 };
 
-export const rateLimit = (() => {
-  const limits = new Map<string, number[]>();
-  const WINDOW_MS = 60000; // 1 minute
-  const MAX_REQUESTS = 60; // 60 requests per minute
+export const clearToken = (): void => {
+  localStorage.removeItem(TOKEN_KEY);
+  localStorage.removeItem('token_timestamp');
+};
 
-  return (key: string): boolean => {
-    const now = Date.now();
-    const timestamps = limits.get(key) || [];
-    
-    // Remove timestamps outside current window
-    const validTimestamps = timestamps.filter(t => now - t < WINDOW_MS);
-    
-    if (validTimestamps.length >= MAX_REQUESTS) {
-      return false;
-    }
-    
-    validTimestamps.push(now);
-    limits.set(key, validTimestamps);
-    return true;
-  };
-})();
+export const isTokenValid = (token: string): boolean => {
+  try {
+    const decoded = jwtDecode(token);
+    return decoded && decoded.exp ? decoded.exp * 1000 > Date.now() : false;
+  } catch {
+    return false;
+  }
+};
