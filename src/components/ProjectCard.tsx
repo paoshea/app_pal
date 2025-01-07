@@ -48,3 +48,65 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     </div>
   );
 }
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+import Badge from './common/Badge';
+
+interface Project {
+  id: string;
+  name: string;
+  description: string;
+  priority: number;
+  techStack: string[];
+  status: string;
+  completion: number;
+}
+
+interface ProjectCardProps {
+  project: Project;
+}
+
+export default function ProjectCard({ project }: ProjectCardProps) {
+  return (
+    <div className="bg-white rounded-lg shadow p-6 hover:shadow-md transition-shadow">
+      <div className="flex justify-between items-start mb-4">
+        <div>
+          <h3 className="text-lg font-medium text-gray-900">{project.name}</h3>
+          <p className="text-sm text-gray-500 mt-1">{project.description}</p>
+        </div>
+        <Badge variant={project.status === 'In Progress' ? 'blue' : 'gray'}>
+          {project.status}
+        </Badge>
+      </div>
+      
+      <div className="space-y-4">
+        <div className="flex gap-2">
+          {project.techStack.map((tech) => (
+            <Badge key={tech} variant="gray" size="sm">
+              {tech}
+            </Badge>
+          ))}
+        </div>
+        
+        <div className="flex justify-between items-center">
+          <div className="w-full max-w-[200px]">
+            <div className="bg-gray-200 rounded-full h-2">
+              <div 
+                className="bg-blue-600 h-2 rounded-full" 
+                style={{ width: `${project.completion}%` }}
+              />
+            </div>
+          </div>
+          <Link
+            to={`/projects/${project.id}`}
+            className="text-blue-600 hover:text-blue-700 inline-flex items-center"
+          >
+            View
+            <ArrowRight className="w-4 h-4 ml-1" />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
