@@ -27,7 +27,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Suspense fallback={<LoadingSpinner />}><Landing /></Suspense>
+        element: <Suspense fallback={<LoadingSpinner />}><Landing /></Suspense>,
+        index: true
       },
       {
         path: '/dashboard',

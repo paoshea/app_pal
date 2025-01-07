@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Lightbulb, Plus } from 'lucide-react';
+import { Lightbulb, Plus, BarChart3, Code, BookOpen } from 'lucide-react';
 import ProjectCard from '../components/ProjectCard';
+import { useAuthStore } from '../store/authStore';
 
 const mockProjects = [
   {
@@ -11,22 +13,26 @@ const mockProjects = [
     priority: 3,
     techStack: ['react', 'node', 'postgres'],
     status: 'In Progress',
-    completion: 75
+    completion: 75,
+    updatedAt: new Date()
   },
   {
     id: '2',
     name: 'Mobile Banking App',
     description: 'Secure financial transactions app with React Native',
-    priority: 4,
+    priority: 2,
     techStack: ['react-native', 'typescript', 'firebase'],
     status: 'Planning',
-    completion: 20
+    completion: 20,
+    updatedAt: new Date()
   }
 ];
 
-const recentActivity = [
-  { id: 1, action: 'Updated tech stack', project: 'E-Commerce Platform', time: '2 hours ago' },
-  { id: 2, action: 'Created new project', project: 'Mobile Banking App', time: '5 hours ago' }
+const quickLinks = [
+  { icon: BarChart3, label: 'Project Overview', path: '/projects' },
+  { icon: Lightbulb, label: 'Project Ideas', path: '/projectideas' },
+  { icon: Code, label: 'Tech Stack', path: '/projects/tech' },
+  { icon: BookOpen, label: 'Documentation', path: '/projects/docs' }
 ];
 
 export default function Dashboard() {
@@ -44,32 +50,49 @@ export default function Dashboard() {
           <Plus className="w-5 h-5 mr-2" />
           New Project
         </Link>
-        <button
-          onClick={() => useAuthStore.getState().logout()}
-          className="ml-4 px-4 py-2 text-red-600 border border-red-600 rounded-md hover:bg-red-50"
-        >
-          Sign Out
-        </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {mockProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        {quickLinks.map((link) => (
+          <Link
+            key={link.path}
+            to={link.path}
+            className="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
+          >
+            <link.icon className="w-6 h-6 text-blue-600 mb-2" />
+            <span className="text-sm font-medium text-gray-900">{link.label}</span>
+          </Link>
         ))}
       </div>
 
-      <div className="bg-white rounded-lg shadow p-6">
-        <h2 className="text-lg font-medium mb-4">Recent Activity</h2>
-        <div className="space-y-4">
-          {recentActivity.map((activity) => (
-            <div key={activity.id} className="flex items-center justify-between border-b pb-4">
-              <div>
-                <p className="text-sm font-medium text-gray-900">{activity.action}</p>
-                <p className="text-sm text-gray-500">{activity.project}</p>
-              </div>
-              <span className="text-sm text-gray-400">{activity.time}</span>
-            </div>
+      <div className="mb-8">
+        <h2 className="text-lg font-medium mb-4">Recent Projects</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {mockProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
+        </div>
+      </div>
+
+      <div className="bg-white rounded-lg shadow p-6">
+        <h2 className="text-lg font-medium mb-4">Quick Stats</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="p-4 bg-blue-50 rounded-lg">
+            <div className="text-2xl font-bold text-blue-600">2</div>
+            <div className="text-sm text-gray-600">Active Projects</div>
+          </div>
+          <div className="p-4 bg-green-50 rounded-lg">
+            <div className="text-2xl font-bold text-green-600">75%</div>
+            <div className="text-sm text-gray-600">Completion Rate</div>
+          </div>
+          <div className="p-4 bg-purple-50 rounded-lg">
+            <div className="text-2xl font-bold text-purple-600">3</div>
+            <div className="text-sm text-gray-600">Tech Stacks</div>
+          </div>
+          <div className="p-4 bg-yellow-50 rounded-lg">
+            <div className="text-2xl font-bold text-yellow-600">5</div>
+            <div className="text-sm text-gray-600">Documentation Pages</div>
+          </div>
         </div>
       </div>
     </div>
