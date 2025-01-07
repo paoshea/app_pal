@@ -8,7 +8,7 @@ import { Layout } from '../components/Layout';
 import { useAuthStore } from '../store/authStore';
 import ProtectedRoute from './ProtectedRoute';
 import { lazy, Suspense } from 'react';
-import LoadingSpinner from '../components/common/LoadingSpinner';
+import { LoadingSpinner } from '../components/common/LoadingSpinner';
 import ErrorBoundary from '../components/error/ErrorBoundary';
 
 const Landing = lazy(() => import('../pages/Landing').then(module => ({ default: module.default })));
