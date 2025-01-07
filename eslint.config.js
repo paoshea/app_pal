@@ -1,32 +1,23 @@
 
+import globals from 'globals'
+
 export default [
   {
-    ignores: ['dist'],
-    extends: ['eslint:recommended'],
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
-      ecmaVersion: 2020,
-      sourceType: 'module',
+      globals: {
+        ...globals.browser
+      },
       parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
         ecmaFeatures: {
           jsx: true
         }
-      },
-      globals: {
-        document: 'readonly',
-        window: 'readonly'
       }
     },
-    plugins: {
-      'react-hooks': {
-        rules: {
-          'rules-of-hooks': 'error',
-          'exhaustive-deps': 'warn'
-        }
-      },
-      'react-refresh': {
-        'only-export-components': ['warn', { allowConstantExport: true }]
-      }
+    rules: {
+      'react-refresh/only-export-components': 'warn'
     }
   }
-];
+]
