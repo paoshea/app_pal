@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -17,14 +16,14 @@ export default function NavLinks() {
   const { isAuthenticated, logout } = useAuthStore();
 
   const links = isAuthenticated ? [
-    { path: '/dashboard', label: 'Dashboard', icon: Home },
-    { path: '/projects', label: 'Projects', icon: Layout },
-    { path: '/projectideas', label: 'Ideas', icon: Lightbulb },
-    { path: '/settings', label: 'Settings', icon: Settings },
+    { path: '/app/dashboard', label: 'Dashboard', icon: Home },
+    { path: '/app/projects', label: 'Projects', icon: Layout },
+    { path: '/app/projectideas', label: 'Ideas', icon: Lightbulb },
+    { path: '/app/settings', label: 'Settings', icon: Settings },
     { onClick: logout, label: 'Sign Out', icon: LogOut }
   ] : [
     { path: '/', label: 'Home', icon: Home },
-    { path: '/guest', label: 'Guest Dashboard', icon: Users },
+    { path: '/app/guest', label: 'Guest Dashboard', icon: Users },
     { path: '/features', label: 'Features', icon: Layout },
     { path: '/about', label: 'About', icon: BookOpen }
   ];

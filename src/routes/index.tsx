@@ -22,16 +22,16 @@ const NotFound = lazy(() => import('../pages/NotFound'));
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <Landing />,
+    index: true
+  },
+  {
+    path: '/app',
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
-        element: <Landing />,
-        index: true
-      },
-      {
-        path: '/guest',
+        path: 'guest',
         element: <GuestDashboard />
       },
       {
