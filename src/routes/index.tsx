@@ -44,6 +44,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   {
+    path: '/contact',
+    element: <Contact />,
+    errorElement: <ErrorPage />
+  },
+  {
     path: '/app',
     element: <Layout />,
     errorElement: <ErrorPage />,
@@ -51,10 +56,6 @@ const router = createBrowserRouter([
       {
         path: 'guest-dashboard',
         element: <GuestDashboard />
-      },
-      {
-        path: 'contact',
-        element: <Contact />
       },
       {
         path: 'dashboard',
