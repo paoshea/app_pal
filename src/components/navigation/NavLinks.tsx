@@ -1,15 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Lightbulb, Home, Layout, Settings, LogOut, Users, BookOpen } from 'lucide-react';
-import { 
-  Home,
-  Settings,
-  BookOpen,
-  Layout,
-  LogOut,
-  Users,
-  Lightbulb
-} from 'lucide-react';
+import { Trophy, Home, Layout, Settings, LogOut, Users, BookOpen } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 
 export default function NavLinks() {
@@ -19,7 +10,7 @@ export default function NavLinks() {
   const links = isAuthenticated ? [
     { path: '/app/dashboard', label: 'Dashboard', icon: Home },
     { path: '/app/projects', label: 'Projects', icon: Layout },
-    { path: '/app/projectideas', label: 'Ideas', icon: Lightbulb },
+    { path: '/app/projectideas', label: 'Ideas', icon: Trophy },
     { path: '/app/settings', label: 'Settings', icon: Settings },
     { onClick: logout, label: 'Sign Out', icon: LogOut }
   ] : [
