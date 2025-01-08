@@ -8,7 +8,7 @@ import {
   Layout,
   LogOut,
   Users,
-  LightbulbIcon
+  Lightbulb as LightbulbIcon
 } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 
