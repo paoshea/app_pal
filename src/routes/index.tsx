@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         ]
       },
       {
-        path: '/settings',
+        path: 'settings',
         element: (
           <ProtectedRoute>
             <Settings />
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: '/projectideas',
+        path: 'projectideas',
         element: (
           <ProtectedRoute>
             <ProjectIdeas />
@@ -80,19 +80,19 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: '/features',
+        path: 'features',
         element: <Features />
       },
       {
-        path: '/about',
+        path: 'about',
         element: <About />
       },
       {
-        path: '/signin',
+        path: 'signin',
         element: <SignIn />
       },
       {
-        path: '/register',
+        path: 'register',
         element: <Register />
       },
       {
