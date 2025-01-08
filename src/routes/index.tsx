@@ -1,4 +1,3 @@
-
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from '../components/Layout';
@@ -28,28 +27,18 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <Landing />
-          </Suspense>
-        ),
+        element: <Landing />,
         index: true
       },
       {
         path: '/guest',
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <GuestDashboard />
-          </Suspense>
-        )
+        element: <GuestDashboard />
       },
       {
         path: '/dashboard',
         element: (
           <ProtectedRoute>
-            <Suspense fallback={<LoadingSpinner />}>
-              <Dashboard />
-            </Suspense>
+            <Dashboard />
           </ProtectedRoute>
         )
       },
@@ -60,9 +49,7 @@ const router = createBrowserRouter([
             path: '',
             element: (
               <ProtectedRoute>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <Projects />
-                </Suspense>
+                <Projects />
               </ProtectedRoute>
             )
           },
@@ -70,9 +57,7 @@ const router = createBrowserRouter([
             path: ':id',
             element: (
               <ProtectedRoute>
-                <Suspense fallback={<LoadingSpinner />}>
-                  <ProjectDetails />
-                </Suspense>
+                <ProjectDetails />
               </ProtectedRoute>
             )
           }
@@ -82,9 +67,7 @@ const router = createBrowserRouter([
         path: '/settings',
         element: (
           <ProtectedRoute>
-            <Suspense fallback={<LoadingSpinner />}>
-              <Settings />
-            </Suspense>
+            <Settings />
           </ProtectedRoute>
         )
       },
@@ -92,59 +75,29 @@ const router = createBrowserRouter([
         path: '/projectideas',
         element: (
           <ProtectedRoute>
-            <Suspense fallback={<LoadingSpinner />}>
-              <ProjectIdeas />
-            </Suspense>
+            <ProjectIdeas />
           </ProtectedRoute>
         )
       },
       {
-        path: '/guest',
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <GuestDashboard />
-          </Suspense>
-        )
-      },
-      {
         path: '/features',
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <Features />
-          </Suspense>
-        )
+        element: <Features />
       },
       {
         path: '/about',
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <About />
-          </Suspense>
-        )
+        element: <About />
       },
       {
         path: '/signin',
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <SignIn />
-          </Suspense>
-        )
+        element: <SignIn />
       },
       {
         path: '/register',
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <Register />
-          </Suspense>
-        )
+        element: <Register />
       },
       {
         path: '*',
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <NotFound />
-          </Suspense>
-        )
+        element: <NotFound />
       }
     ]
   }

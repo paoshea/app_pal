@@ -1,14 +1,14 @@
+
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   Home,
   Settings,
   BookOpen,
-  Code2,
   Layout,
   LogOut,
   Users,
-  Lightbulb as LightbulbIcon
+  Lightbulb
 } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 
@@ -19,7 +19,7 @@ export default function NavLinks() {
   const links = isAuthenticated ? [
     { path: '/dashboard', label: 'Dashboard', icon: Home },
     { path: '/projects', label: 'Projects', icon: Layout },
-    { path: '/projectideas', label: 'Ideas', icon: LightbulbIcon },
+    { path: '/projectideas', label: 'Ideas', icon: Lightbulb },
     { path: '/settings', label: 'Settings', icon: Settings },
     { onClick: logout, label: 'Sign Out', icon: LogOut }
   ] : [
