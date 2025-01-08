@@ -1,3 +1,4 @@
+
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from '../components/Layout';
@@ -38,21 +39,25 @@ const router = createBrowserRouter([
     element: <Register />
   },
   {
+    path: '/about',
+    element: <About />
+  },
+  {
     path: '/app',
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: 'guest-dashboard',
-        element: <GuestDashboard />
-      },
-      {
-        path: 'dashboard',
+        path: '',
         element: (
           <ProtectedRoute>
             <Dashboard />
           </ProtectedRoute>
         )
+      },
+      {
+        path: 'guest-dashboard',
+        element: <GuestDashboard />
       },
       {
         path: 'projects',
@@ -84,28 +89,12 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: 'projectideas',
+        path: 'project-ideas',
         element: (
           <ProtectedRoute>
             <ProjectIdeas />
           </ProtectedRoute>
         )
-      },
-      {
-        path: 'features',
-        element: <Features />
-      },
-      {
-        path: 'about',
-        element: <About />
-      },
-      {
-        path: 'signin',
-        element: <SignIn />
-      },
-      {
-        path: 'register',
-        element: <Register />
       },
       {
         path: '*',
