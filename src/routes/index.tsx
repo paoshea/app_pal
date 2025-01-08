@@ -1,11 +1,10 @@
 
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from '../components/Layout';
 import ErrorPage from '../pages/ErrorPage';
 import ProtectedRoute from './ProtectedRoute';
 import LoadingSpinner from '../components/common/LoadingSpinner';
-import { useAuthStore } from '../store/authStore';
 
 const Dashboard = lazy(() => import('../pages/Dashboard'));
 const Settings = lazy(() => import('../pages/Settings'));
@@ -24,7 +23,27 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Landing />,
-    index: true
+    errorElement: <ErrorPage />
+  },
+  {
+    path: '/features',
+    element: <Features />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: '/signin',
+    element: <SignIn />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: '/register',
+    element: <Register />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: '/about',
+    element: <About />,
+    errorElement: <ErrorPage />
   },
   {
     path: '/app',
@@ -32,32 +51,16 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: 'features',
-        element: <Features />
-      },
-      {
-        path: 'signin',
-        element: <SignIn />
-      },
-      {
-        path: 'register',
-        element: <Register />
-      },
-      {
-        path: 'about',
-        element: <About />
-      },
-      {
-        path: 'guest-dashboard',
-        element: <GuestDashboard />
-      },
-      {
         path: '',
         element: (
           <ProtectedRoute>
             <Dashboard />
           </ProtectedRoute>
         )
+      },
+      {
+        path: 'guest-dashboard',
+        element: <GuestDashboard />
       },
       {
         path: 'projects',
@@ -95,12 +98,12 @@ const router = createBrowserRouter([
             <ProjectIdeas />
           </ProtectedRoute>
         )
-      },
-      {
-        path: '*',
-        element: <NotFound />
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFound />
   }
 ]);
 
