@@ -15,7 +15,7 @@ function Landing() {
             </div>
             <div className="flex items-center space-x-4">
               <Link to="/features" className="text-gray-600 hover:text-gray-900">Features</Link>
-              <Link to="/guest-dashboard" className="text-gray-600 hover:text-gray-900">Try Demo</Link>
+              <Link to="/app/guest-dashboard" className="text-gray-600 hover:text-gray-900">Try Demo</Link>
               <Link to="/signin" className="text-gray-600 hover:text-gray-900">Sign in</Link>
               <Link to="/register" className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
                 Get Started
@@ -109,14 +109,14 @@ function Landing() {
               <h3 className="text-sm font-semibold text-gray-900">Product</h3>
               <div className="mt-4 space-y-4">
                 <Link to="/features" className="text-sm text-gray-600 hover:text-gray-900 block">Features</Link>
-                <Link to="/guest" className="text-sm text-gray-600 hover:text-gray-900 block">Guest Demo</Link>
+                <Link to="/app/guest-dashboard" className="text-sm text-gray-600 hover:text-gray-900 block">Guest Demo</Link>
               </div>
             </div>
             <div>
               <h3 className="text-sm font-semibold text-gray-900">Company</h3>
               <div className="mt-4 space-y-4">
                 <Link to="/about" className="text-sm text-gray-600 hover:text-gray-900 block">About</Link>
-                <Link to="/contact" className="text-sm text-gray-600 hover:text-gray-900 block">Contact</Link>
+                <Link to="/app/contact" className="text-sm text-gray-600 hover:text-gray-900 block">Contact</Link>
               </div>
             </div>
           </div>
