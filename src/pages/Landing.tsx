@@ -93,7 +93,7 @@ function Landing() {
                 </div>
               </div>
               <div className="text-center md:text-right">
-                <Link to="/guest" className="inline-flex items-center px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                <Link to="/app/guest-dashboard" className="inline-flex items-center px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700">
                   Launch Guest Demo <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </div>
