@@ -1,6 +1,4 @@
-
 import { createBrowserRouter } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
 import Layout from '../components/Layout';
 import ErrorPage from '../pages/ErrorPage';
 import ProtectedRoute from './ProtectedRoute';
@@ -12,12 +10,11 @@ import Register from '../pages/Register';
 import About from '../pages/About';
 import GuestDashboard from '../pages/GuestDashboard';
 import NotFound from '../pages/NotFound';
-
-const Dashboard = lazy(() => import('../pages/Dashboard'));
-const Projects = lazy(() => import('../pages/Projects'));
-const Settings = lazy(() => import('../pages/Settings'));
-const ProjectDetails = lazy(() => import('../pages/ProjectDetails'));
-const ProjectIdeas = lazy(() => import('../pages/ProjectIdeas'));
+import Dashboard from '../pages/Dashboard';
+import Projects from '../pages/Projects';
+import Settings from '../pages/Settings';
+import ProjectDetails from '../pages/ProjectDetails';
+import ProjectIdeas from '../pages/ProjectIdeas';
 
 const router = createBrowserRouter([
   {
@@ -57,53 +54,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: '',
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          </Suspense>
-        )
+        element: <Dashboard />
       },
       {
         path: 'projects',
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <ProtectedRoute>
-              <Projects />
-            </ProtectedRoute>
-          </Suspense>
-        ),
+        element: <Projects />
       },
       {
         path: 'projects/:id',
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <ProtectedRoute>
-              <ProjectDetails />
-            </ProtectedRoute>
-          </Suspense>
-        ),
+        element: <ProjectDetails />
       },
       {
         path: 'settings',
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <ProtectedRoute>
-              <Settings />
-            </ProtectedRoute>
-          </Suspense>
-        ),
+        element: <Settings />
       },
       {
         path: 'ideas',
-        element: (
-          <Suspense fallback={<LoadingSpinner />}>
-            <ProtectedRoute>
-              <ProjectIdeas />
-            </ProtectedRoute>
-          </Suspense>
-        ),
+        element: <ProjectIdeas />
       }
     ]
   },
