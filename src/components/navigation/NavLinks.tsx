@@ -1,8 +1,7 @@
 
 import React from 'react';
-import { Lightbulb, Settings, Home, FolderGit2 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import { Trophy, Home, Layout, Settings, LogOut, Users, BookOpen } from 'lucide-react';
+import { Trophy, Home, Layout, Settings, LogOut, Users, BookOpen, Lightbulb, FolderGit2 } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 
 export default function NavLinks() {
