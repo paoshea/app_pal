@@ -49,14 +49,15 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   {
+    path: '/guest-dashboard',
+    element: <GuestDashboard />,
+    errorElement: <ErrorPage />
+  },
+  {
     path: '/app',
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: 'guest-dashboard',
-        element: <GuestDashboard />
-      },
       {
         path: 'dashboard',
         element: <Dashboard />

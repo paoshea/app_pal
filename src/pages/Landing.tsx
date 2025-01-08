@@ -15,7 +15,7 @@ function Landing() {
             </div>
             <div className="flex items-center space-x-4">
               <Link to="/features" className="text-gray-600 hover:text-gray-900">Features</Link>
-              <Link to="/app/guest-dashboard" className="text-gray-600 hover:text-gray-900">Guest Demo</Link>
+              <Link to="/guest-dashboard" className="text-gray-600 hover:text-gray-900">Guest Demo</Link>
               <Link to="/signin" className="text-gray-600 hover:text-gray-900">Sign in</Link>
               <Link to="/register" className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
                 Get Started
@@ -34,7 +34,7 @@ function Landing() {
             Streamline your development workflow with project tracking, tech stack management, and team collaboration tools.
           </p>
           <div className="flex justify-center space-x-4">
-            <Link to="/app/guest-dashboard" className="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center">
+            <Link to="/guest-dashboard" className="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center">
               Launch Guest Demo <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
             <Link to="/features" className="px-6 py-3 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 flex items-center">
