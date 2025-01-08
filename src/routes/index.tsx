@@ -81,7 +81,7 @@ const router = createBrowserRouter([
         element: <Settings />
       },
       {
-        path: 'ideas',
+        path: 'project-ideas',
         element: <ProjectIdeas />
       }
     ]
