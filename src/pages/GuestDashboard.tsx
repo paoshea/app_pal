@@ -1,17 +1,25 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useGuestProjects } from '../hooks/useGuestProjects';
 import GuestProjectList from '../components/guest/GuestProjectList';
 import { BarChart, Users, GitBranch, Calendar } from 'lucide-react';
 import Logo from '../components/brand/Logo';
+import CreateGuestProject from '../components/guest/CreateGuestProject';
 
 const mockStats = [
-  { label: 'Demo Projects', value: '3', icon: BarChart },
-  { label: 'Guest Features', value: '5', icon: GitBranch },
-  { label: 'Active Users', value: '1.2k', icon: Users },
+  { label: 'Projects', value: '0', icon: BarChart },
+  { label: 'Features', value: '5', icon: GitBranch },
+  { label: 'Users', value: '1.2k', icon: Users },
   { label: 'Updates', value: 'Daily', icon: Calendar },
 ];
 
 function GuestDashboard() {
+  const { projects, canAddMoreProjects } = useGuestProjects();
+
+  // Update stats with real project count
+  mockStats[0].value = projects.length.toString();
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <nav className="bg-white border-b border-gray-200">
@@ -20,11 +28,11 @@ function GuestDashboard() {
             <Link to="/" className="flex items-center">
               <Logo variant="minimal" size="sm" />
             </Link>
-            <Link to="/" className="text-blue-600 hover:text-blue-700 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-              </svg>
-              Home
+            <Link
+              to="/register"
+              className="text-blue-600 hover:text-blue-700 font-medium"
+            >
+              Upgrade to Pro
             </Link>
           </div>
         </div>
@@ -55,6 +63,12 @@ function GuestDashboard() {
             ))}
           </div>
 
+          {canAddMoreProjects && (
+            <div className="mb-8">
+              <CreateGuestProject />
+            </div>
+          )}
+
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-8">
             <div className="p-6">
               <h2 className="text-lg font-semibold mb-4">Your Projects</h2>
@@ -64,33 +78,15 @@ function GuestDashboard() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-6 mb-8 text-white">
-          <h2 className="text-xl font-semibold mb-2">Upgrade to Power User</h2>
-          <p className="mb-4">Get access to advanced features, unlimited projects, and priority support.</p>
-          <Link to="/register" className="inline-block px-4 py-2 bg-white text-blue-600 rounded-md font-medium hover:bg-blue-50 transition-colors">
-            Upgrade Now
-          </Link>
-        </div>
-      </div>
-
       <footer className="bg-white border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-sm font-semibold text-gray-900">Product</h3>
-              <div className="mt-4 space-y-4">
-                <Link to="/features" className="text-sm text-gray-600 hover:text-gray-900 block">Features</Link>
-                <Link to="/register" className="text-sm text-gray-600 hover:text-gray-900 block">Register</Link>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold text-gray-900">Company</h3>
-              <div className="mt-4 space-y-4">
-                <Link to="/about" className="text-sm text-gray-600 hover:text-gray-900 block">About</Link>
-                <Link to="/contact" className="text-sm text-gray-600 hover:text-gray-900 block">Contact</Link>
-              </div>
-            </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="text-center">
+            <p className="text-sm text-gray-500">
+              Want more features?{' '}
+              <Link to="/register" className="text-blue-600 hover:text-blue-700 font-medium">
+                Upgrade to Pro
+              </Link>
+            </p>
           </div>
         </div>
       </footer>
