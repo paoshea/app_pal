@@ -28,6 +28,8 @@ const router = createBrowserRouter([
   },
   {
     path: '/app',
+    element: <Layout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: 'features',
@@ -45,11 +47,10 @@ const router = createBrowserRouter([
         path: 'about',
         element: <About />
       },
-  {
-    path: '/app',
-    element: <Layout />,
-    errorElement: <ErrorPage />,
-    children: [
+      {
+        path: 'guest-dashboard',
+        element: <GuestDashboard />
+      },
       {
         path: '',
         element: (
@@ -57,10 +58,6 @@ const router = createBrowserRouter([
             <Dashboard />
           </ProtectedRoute>
         )
-      },
-      {
-        path: 'guest-dashboard',
-        element: <GuestDashboard />
       },
       {
         path: 'projects',
