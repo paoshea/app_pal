@@ -15,7 +15,7 @@ function Register() {
       await register(email, password, email.split('@')[0]);
       toast.success('Registration successful! Redirecting to dashboard...');
       setTimeout(() => {
-        navigate('/dashboard', { replace: true });
+        navigate('/app/dashboard', { replace: true });
       }, 1500);
     } catch (error) {
       toast.error('Registration failed. Please try again.');
