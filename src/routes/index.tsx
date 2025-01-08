@@ -54,6 +54,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   {
+    path: '/guest-dashboard/:projectId',
+    element: <GuestProjectView />,
+    errorElement: <ErrorPage />
+  },
+  {
     path: '/app',
     element: <Layout />,
     errorElement: <ErrorPage />,

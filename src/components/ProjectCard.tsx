@@ -43,7 +43,7 @@ function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="mt-4 flex justify-end">
         <Link 
-          to={`/projects/${project.id}`}
+          to={`/guest-dashboard/${project.id}`}
           className="px-3 py-1 text-sm text-blue-600 hover:bg-blue-50 rounded-md inline-flex items-center"
         >
           View Details
