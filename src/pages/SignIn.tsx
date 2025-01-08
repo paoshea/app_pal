@@ -15,7 +15,7 @@ function SignIn() {
     try {
       await login(email, password);
       toast.success('Successfully signed in!');
-      navigate('/dashboard');
+      navigate('/app/dashboard');
     } catch (error) {
       toast.error('Sign in failed. Please check your credentials and try again.');
     }
