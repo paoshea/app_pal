@@ -15,7 +15,7 @@ function Landing() {
             </div>
             <div className="flex items-center space-x-4">
               <Link to="/features" className="text-gray-600 hover:text-gray-900">Features</Link>
-              <Link to="/app/guest-dashboard" className="text-gray-600 hover:text-gray-900">Try Demo</Link>
+              <Link to="/guest-dashboard" className="text-gray-600 hover:text-gray-900">Try Demo</Link>
               <Link to="/signin" className="text-gray-600 hover:text-gray-900">Sign in</Link>
               <Link to="/register" className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">
                 Get Started
