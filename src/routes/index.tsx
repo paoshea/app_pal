@@ -1,14 +1,15 @@
+
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../components/Layout';
 import ErrorPage from '../pages/ErrorPage';
 import ProtectedRoute from './ProtectedRoute';
-import LoadingSpinner from '../components/common/LoadingSpinner';
 import Landing from '../pages/Landing';
 import Features from '../pages/Features';
 import SignIn from '../pages/SignIn';
 import Register from '../pages/Register';
 import About from '../pages/About';
 import GuestDashboard from '../pages/GuestDashboard';
+import Contact from '../pages/Contact';
 import NotFound from '../pages/NotFound';
 import Dashboard from '../pages/Dashboard';
 import Projects from '../pages/Projects';
@@ -43,17 +44,20 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   {
-    path: '/guest-dashboard',
-    element: <GuestDashboard />,
-    errorElement: <ErrorPage />
-  },
-  {
     path: '/app',
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '',
+        path: 'guest-dashboard',
+        element: <GuestDashboard />
+      },
+      {
+        path: 'contact',
+        element: <Contact />
+      },
+      {
+        path: 'dashboard',
         element: <Dashboard />
       },
       {
