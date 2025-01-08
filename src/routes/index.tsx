@@ -10,6 +10,7 @@ import Register from '../pages/Register';
 import About from '../pages/About';
 import GuestDashboard from '../pages/GuestDashboard';
 import Contact from '../pages/Contact';
+import GuestProjectView from '../components/guest/GuestProjectView';
 import NotFound from '../pages/NotFound';
 import Dashboard from '../pages/Dashboard';
 import Projects from '../pages/Projects';
