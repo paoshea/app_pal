@@ -35,7 +35,7 @@ function Landing() {
           </p>
           <div className="flex justify-center space-x-4">
             <Link to="/app/guest-dashboard" className="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center">
-              Try Guest Demo <ArrowRight className="ml-2 w-4 h-4" />
+              Launch Guest Demo <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
             <Link to="/features" className="px-6 py-3 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 flex items-center">
               View Features
