@@ -5,9 +5,10 @@ import LoadingSpinner from '../components/common/LoadingSpinner';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
+  requiresAuth?: boolean;
 }
 
-export default function ProtectedRoute({ children }: ProtectedRouteProps) {
+export default function ProtectedRoute({ children, requiresAuth = true }: ProtectedRouteProps) {
   const { isAuthenticated, isLoading } = useAuthStore();
   const location = useLocation();
   
@@ -15,9 +16,13 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     return <LoadingSpinner />;
   }
   
-  return isAuthenticated ? (
-    children
-  ) : (
-    <Navigate to="/signin" state={{ from: location }} replace />
-  );
+  if (!isAuthenticated && requiresAuth) {
+    return <Navigate to="/guest" state={{ from: location }} replace />;
+  }
+  
+  if (isAuthenticated && !requiresAuth) {
+    return <Navigate to="/dashboard" replace />;
+  }
+  
+  return <>{children}</>;
 }

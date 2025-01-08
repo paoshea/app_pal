@@ -30,10 +30,16 @@ const router = createBrowserRouter([
         path: '/',
         element: (
           <Suspense fallback={<LoadingSpinner />}>
-            {useAuthStore.getState().isAuthenticated ? 
-              <Navigate to="/dashboard" replace /> : 
-              <Landing />
-            }
+            <Landing />
+          </Suspense>
+        ),
+        index: true
+      },
+      {
+        path: '/guest',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <GuestDashboard />
           </Suspense>
         )
       },
