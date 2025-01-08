@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -16,7 +15,7 @@ import { useAuthStore } from '../../store/authStore';
 export default function NavLinks() {
   const location = useLocation();
   const { isAuthenticated, logout } = useAuthStore();
-  
+
   const links = isAuthenticated ? [
     { path: '/dashboard', label: 'Dashboard', icon: Home },
     { path: '/projects', label: 'Projects', icon: Layout },
@@ -36,7 +35,7 @@ export default function NavLinks() {
         const Icon = link.icon;
         const isActive = link.path ? location.pathname === link.path : false;
         const LinkComponent = link.onClick ? 'button' : Link;
-        
+
         return (
           <LinkComponent
             key={link.path || link.label}
