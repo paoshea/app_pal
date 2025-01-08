@@ -27,21 +27,24 @@ const router = createBrowserRouter([
     index: true
   },
   {
-    path: '/features',
-    element: <Features />
-  },
-  {
-    path: '/signin',
-    element: <SignIn />
-  },
-  {
-    path: '/register',
-    element: <Register />
-  },
-  {
-    path: '/about',
-    element: <About />
-  },
+    path: '/app',
+    children: [
+      {
+        path: 'features',
+        element: <Features />
+      },
+      {
+        path: 'signin',
+        element: <SignIn />
+      },
+      {
+        path: 'register',
+        element: <Register />
+      },
+      {
+        path: 'about',
+        element: <About />
+      },
   {
     path: '/app',
     element: <Layout />,
