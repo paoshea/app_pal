@@ -1,4 +1,3 @@
-
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../components/Layout';
 import ErrorPage from '../pages/ErrorPage';
@@ -65,24 +64,24 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/app/dashboard',
+        path: 'dashboard',
         element: <ProtectedRoute><Dashboard /></ProtectedRoute>
       },
       {
-        path: '/app/projects',
+        path: 'project-ideas',
+        element: <ProtectedRoute><ProjectIdeas /></ProtectedRoute>
+      },
+      {
+        path: 'projects',
         element: <ProtectedRoute><Projects /></ProtectedRoute>
       },
       {
-        path: '/app/projects/:id',
+        path: 'projects/:id',
         element: <ProtectedRoute><ProjectDetails /></ProtectedRoute>
       },
       {
-        path: '/app/settings',
+        path: 'settings',
         element: <ProtectedRoute><Settings /></ProtectedRoute>
-      },
-      {
-        path: '/app/project-ideas',
-        element: <ProtectedRoute><ProjectIdeas /></ProtectedRoute>
       }
     ]
   },
