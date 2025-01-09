@@ -11,34 +11,21 @@ export default function BottomNav() {
   if (!isMobile) return null;
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hidden">
-      <div className="flex justify-around">
-        {isAuthenticated ? (
-          <>
-            <Link to="/app/dashboard" className="p-4">
-              <Home className="w-6 h-6" />
-            </Link>
-            <Link to="/app/projects" className="p-4">
-              <Layout className="w-6 h-6" />
-            </Link>
-            <Link to="/app/project-ideas" className="p-4">
-              <Trophy className="w-6 h-6" />
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link to="/" className="p-4">
-              <Home className="w-6 h-6" />
-            </Link>
-            <Link to="/features" className="p-4">
-              <Layout className="w-6 h-6" />
-            </Link>
-            <Link to="/about" className="p-4">
-              <Info className="w-6 h-6" />
-            </Link>
-          </>
-        )}
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hidden">
+      <div className="flex justify-around items-center h-16">
+        <Link to="/app/dashboard" className="text-gray-600 hover:text-blue-600">
+          <Home className="w-6 h-6" />
+          <span className="text-xs">Dashboard</span>
+        </Link>
+        <Link to="/app/projects" className="text-gray-600 hover:text-blue-600">
+          <Layout className="w-6 h-6" />
+          <span className="text-xs">Projects</span>
+        </Link>
+        <Link to="/app/project-ideas" className="text-gray-600 hover:text-blue-600">
+          <Trophy className="w-6 h-6" />
+          <span className="text-xs">Ideas</span>
+        </Link>
       </div>
-    </nav>
+    </div>
   );
 }
