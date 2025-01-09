@@ -7,7 +7,7 @@ import NavLinks from './navigation/NavLinks';
 import BottomNav from './mobile/BottomNav';
 import Logo from './brand/Logo';
 import { useAuthStore } from '../store/authStore';
-import WelcomeMessage from '../components/dashboard/WelcomeMessage'; 
+import WelcomeMessage from './dashboard/WelcomeMessage'; 
 import StatsOverview from './dashboard/StatsOverview'; 
 import RecentProjects from './dashboard/RecentProjects'; 
 import TechStackAnalytics from './dashboard/TechStackAnalytics'; 
