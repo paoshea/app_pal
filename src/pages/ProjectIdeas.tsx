@@ -7,6 +7,13 @@ interface ProjectIdea {
   title: string;
   description: string;
   createdAt: string;
+  tasks: Task[];
+}
+
+interface Task {
+  id: string;
+  text: string;
+  completed: boolean;
 }
 
 export default function ProjectIdeas() {
@@ -15,6 +22,8 @@ export default function ProjectIdeas() {
     return saved ? JSON.parse(saved) : [];
   });
   const [newIdea, setNewIdea] = useState({ title: '', description: '' });
+  const [newTask, setNewTask] = useState('');
+  const [selectedIdeaId, setSelectedIdeaId] = useState<string | null>(null);
 
   const saveIdea = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +36,8 @@ export default function ProjectIdeas() {
       id: Date.now().toString(),
       title: newIdea.title,
       description: newIdea.description,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
+      tasks: []
     };
     
     const updatedIdeas = [...ideas, idea];
@@ -42,6 +52,61 @@ export default function ProjectIdeas() {
     setIdeas(updatedIdeas);
     localStorage.setItem('projectIdeas', JSON.stringify(updatedIdeas));
     toast.success('Idea deleted');
+  };
+
+  const addTask = (ideaId: string) => {
+    if (!newTask.trim()) {
+      toast.error('Please enter a task');
+      return;
+    }
+
+    const updatedIdeas = ideas.map(idea => {
+      if (idea.id === ideaId) {
+        return {
+          ...idea,
+          tasks: [...idea.tasks, { id: Date.now().toString(), text: newTask, completed: false }]
+        };
+      }
+      return idea;
+    });
+
+    setIdeas(updatedIdeas);
+    localStorage.setItem('projectIdeas', JSON.stringify(updatedIdeas));
+    setNewTask('');
+    toast.success('Task added');
+  };
+
+  const toggleTask = (ideaId: string, taskId: string) => {
+    const updatedIdeas = ideas.map(idea => {
+      if (idea.id === ideaId) {
+        return {
+          ...idea,
+          tasks: idea.tasks.map(task => 
+            task.id === taskId ? { ...task, completed: !task.completed } : task
+          )
+        };
+      }
+      return idea;
+    });
+
+    setIdeas(updatedIdeas);
+    localStorage.setItem('projectIdeas', JSON.stringify(updatedIdeas));
+  };
+
+  const deleteTask = (ideaId: string, taskId: string) => {
+    const updatedIdeas = ideas.map(idea => {
+      if (idea.id === ideaId) {
+        return {
+          ...idea,
+          tasks: idea.tasks.filter(task => task.id !== taskId)
+        };
+      }
+      return idea;
+    });
+
+    setIdeas(updatedIdeas);
+    localStorage.setItem('projectIdeas', JSON.stringify(updatedIdeas));
+    toast.success('Task deleted');
   };
 
   return (
@@ -80,7 +145,7 @@ export default function ProjectIdeas() {
       <div className="space-y-4">
         {ideas.map((idea) => (
           <div key={idea.id} className="bg-white p-6 rounded-lg shadow-sm">
-            <div className="flex justify-between items-start">
+            <div className="flex justify-between items-start mb-4">
               <div>
                 <h3 className="text-lg font-semibold">{idea.title}</h3>
                 <p className="text-sm text-gray-600 mt-1">{idea.description}</p>
@@ -94,6 +159,55 @@ export default function ProjectIdeas() {
               >
                 Delete
               </button>
+            </div>
+
+            <div className="mt-4">
+              <div className="flex gap-2 mb-4">
+                <input
+                  type="text"
+                  className="flex-1 rounded-md border border-gray-300 px-3 py-2"
+                  placeholder="Add a task"
+                  value={selectedIdeaId === idea.id ? newTask : ''}
+                  onChange={(e) => {
+                    setSelectedIdeaId(idea.id);
+                    setNewTask(e.target.value);
+                  }}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      addTask(idea.id);
+                    }
+                  }}
+                />
+                <button
+                  onClick={() => addTask(idea.id)}
+                  className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+                >
+                  Add
+                </button>
+              </div>
+
+              <div className="space-y-2">
+                {idea.tasks.map((task) => (
+                  <div key={task.id} className="flex items-center gap-2 p-2 bg-gray-50 rounded">
+                    <input
+                      type="checkbox"
+                      checked={task.completed}
+                      onChange={() => toggleTask(idea.id, task.id)}
+                      className="h-4 w-4 text-blue-600"
+                    />
+                    <span className={`flex-1 ${task.completed ? 'line-through text-gray-400' : ''}`}>
+                      {task.text}
+                    </span>
+                    <button
+                      onClick={() => deleteTask(idea.id, task.id)}
+                      className="text-red-600 hover:text-red-800"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         ))}
