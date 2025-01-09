@@ -21,7 +21,7 @@ export default function ProtectedRoute({ children, requiresAuth = true }: Protec
   }
   
   if (isAuthenticated && !requiresAuth) {
-    return <Navigate to="/dashboard" replace />;
+    return <Navigate to="/app/dashboard" replace />;
   }
   
   return <>{children}</>;

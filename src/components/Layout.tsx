@@ -34,8 +34,8 @@ function Layout({ children }: LayoutProps) {
 
   const { isAuthenticated } = useAuthStore();
 
-  if (!isAuthenticated && !isPublicRoute(location.pathname)) {
-    return <Navigate to="/" />;
+  if (!isAuthenticated) {
+    return <Navigate to="/signin" />;
   }
 
   return (
