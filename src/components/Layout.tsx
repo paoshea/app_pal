@@ -7,11 +7,11 @@ import NavLinks from './navigation/NavLinks';
 import BottomNav from './mobile/BottomNav';
 import Logo from './brand/Logo';
 import { useAuthStore } from '../store/authStore';
-import WelcomeMessage from './dashboard/WelcomeMessage'; // Placeholder
-import StatsOverview from './dashboard/StatsOverview'; // Placeholder
-import RecentProjects from './dashboard/RecentProjects'; // Placeholder
-import TechStackAnalytics from './dashboard/TechStackAnalytics'; // Placeholder
-import RecentActivity from './dashboard/RecentActivity'; // Placeholder
+import WelcomeMessage from '../components/dashboard/WelcomeMessage'; 
+import StatsOverview from './dashboard/StatsOverview'; 
+import RecentProjects from './dashboard/RecentProjects'; 
+import TechStackAnalytics from './dashboard/TechStackAnalytics'; 
+import RecentActivity from './dashboard/RecentActivity'; 
 import { useMediaQuery } from '../hooks/useMediaQuery';
 
 
