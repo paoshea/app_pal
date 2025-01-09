@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'; 
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { getViewportHeight } from '../utils/mobileUtils';
 import Header from './layout/Header';
 import MobileNav from './layout/MobileNav';
@@ -7,6 +7,12 @@ import NavLinks from './navigation/NavLinks';
 import BottomNav from './mobile/BottomNav';
 import Logo from './brand/Logo';
 import { useAuthStore } from '../store/authStore';
+import WelcomeMessage from './dashboard/WelcomeMessage'; // Placeholder
+import StatsOverview from './dashboard/StatsOverview'; // Placeholder
+import RecentProjects from './dashboard/RecentProjects'; // Placeholder
+import TechStackAnalytics from './dashboard/TechStackAnalytics'; // Placeholder
+import RecentActivity from './dashboard/RecentActivity'; // Placeholder
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 
 interface LayoutProps {
@@ -15,9 +21,11 @@ interface LayoutProps {
 
 function Layout({ children }: LayoutProps) {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
-  const { logout } = useAuthStore(); 
+  const { logout, user } = useAuthStore();
   const navigate = useNavigate();
-  const location = useLocation(); // Added useLocation
+  const location = useLocation();
+  const isLargeScreen = useMediaQuery('(min-width: 1024px)');
+
 
   const handleSignOut = () => {
     logout();
@@ -26,18 +34,18 @@ function Layout({ children }: LayoutProps) {
 
   const { isAuthenticated } = useAuthStore();
 
-  if (!isAuthenticated && !isPublicRoute(location.pathname)) { //Corrected redirect
+  if (!isAuthenticated && !isPublicRoute(location.pathname)) {
     return <Navigate to="/" />;
   }
 
   return (
     <div className="min-h-screen bg-gray-50" style={{ minHeight: getViewportHeight() }}>
-      <MobileNav 
+      <MobileNav
         isOpen={isMobileNavOpen}
         onClose={() => setIsMobileNavOpen(false)}
       />
 
-      <aside className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:w-64 lg:block lg:bg-white lg:border-r lg:border-gray-200">
+      <aside className={isLargeScreen ? "fixed inset-y-0 left-0 w-64 bg-white border-r border-gray-200" : "hidden"}>
         <div className="flex items-center h-16 px-4 border-b border-gray-200">
           <Link to="/" className="flex items-center">
             <Logo size="md" />
@@ -46,9 +54,26 @@ function Layout({ children }: LayoutProps) {
         <NavLinks className="p-4" />
       </aside>
 
-      <main className="lg:pl-64 pb-16 lg:pb-0">
-        <Header onMenuClick={() => setIsMobileNavOpen(true)} onSignOut={handleSignOut} /> 
-        <div className="p-4 lg:p-6">{children}</div>
+      <main className={`lg:pl-${isLargeScreen ? '64' : '0'} pb-16 lg:pb-0`}>
+        <Header onMenuClick={() => setIsMobileNavOpen(true)} onSignOut={handleSignOut} />
+        <div className="p-4 lg:p-6">
+          {children}
+          {location.pathname === '/app/dashboard' && isAuthenticated && (
+            <>
+              <WelcomeMessage userName={user?.name || ''} />
+              <StatsOverview />
+              <RecentProjects />
+              <div className="lg:flex">
+                <div className="lg:w-3/4">
+                  <RecentActivity />
+                </div>
+                <div className="lg:w-1/4 lg:ml-4">
+                  <TechStackAnalytics />
+                </div>
+              </div>
+            </>
+          )}
+        </div>
       </main>
 
       <BottomNav />
@@ -59,4 +84,4 @@ function Layout({ children }: LayoutProps) {
 export default Layout;
 
 // Helper function for route validation
-const isPublicRoute = (path:string) => path === '/';
+const isPublicRoute = (path: string) => path === '/';
