@@ -17,11 +17,11 @@ export default function BottomNav() {
           <Home className="w-6 h-6" />
           <span className="text-xs">Dashboard</span>
         </Link>
-        <Link to="/app/projects" className="text-gray-600 hover:text-blue-600">
+        <Link to="/app/projects" className="text-gray-600 hover:text-blue-600 flex flex-col items-center">
           <Layout className="w-6 h-6" />
           <span className="text-xs">Projects</span>
         </Link>
-        <Link to="/app/project-ideas" className="text-gray-600 hover:text-blue-600">
+        <Link to="/app/project-ideas" className="text-gray-600 hover:text-blue-600 flex flex-col items-center">
           <Trophy className="w-6 h-6" />
           <span className="text-xs">Ideas</span>
         </Link>
