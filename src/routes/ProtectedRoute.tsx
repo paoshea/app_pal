@@ -17,7 +17,7 @@ export default function ProtectedRoute({ children, requiresAuth = true }: Protec
   }
   
   if (!isAuthenticated && requiresAuth) {
-    return <Navigate to="/guest" state={{ from: location }} replace />;
+    return <Navigate to="/signin" state={{ from: location }} replace />;
   }
   
   if (isAuthenticated && !requiresAuth) {
