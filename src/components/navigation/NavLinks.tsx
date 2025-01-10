@@ -9,10 +9,10 @@ export default function NavLinks() {
   const { isAuthenticated, logout } = useAuthStore();
 
   const links = isAuthenticated ? [
-    { path: '/app/dashboard', label: 'Dashboard', icon: Home },
-    { path: '/app/projects', label: 'Projects', icon: FolderGit2 },
-    { path: '/app/project-ideas', label: 'Ideas', icon: Lightbulb },
-    { path: '/app/settings', label: 'Settings', icon: Settings },
+    { path: 'dashboard', label: 'Dashboard', icon: Home },
+    { path: 'projects', label: 'Projects', icon: FolderGit2 },
+    { path: 'project-ideas', label: 'Ideas', icon: Lightbulb },
+    { path: 'settings', label: 'Settings', icon: Settings },
     { onClick: logout, label: 'Sign Out', icon: LogOut }
   ] : [
     { path: '/', label: 'Home', icon: Home },

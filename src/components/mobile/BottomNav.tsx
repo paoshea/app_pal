@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, Layout, Settings, Lightbulb } from 'lucide-react';
@@ -25,21 +24,21 @@ export default function BottomNav() {
           <span className="text-xs">Dashboard</span>
         </Link>
         <Link 
-          to="/app/projects" 
+          to="projects" 
           className={`flex flex-col items-center ${isActive('/app/projects') ? 'text-blue-600' : 'text-gray-600'}`}
         >
           <Layout className="w-6 h-6" />
           <span className="text-xs">Projects</span>
         </Link>
         <Link 
-          to="/app/project-ideas" 
+          to="project-ideas" 
           className={`flex flex-col items-center ${isActive('/app/project-ideas') ? 'text-blue-600' : 'text-gray-600'}`}
         >
           <Lightbulb className="w-6 h-6" />
           <span className="text-xs">Ideas</span>
         </Link>
         <Link 
-          to="/app/settings" 
+          to="settings" 
           className={`flex flex-col items-center ${isActive('/app/settings') ? 'text-blue-600' : 'text-gray-600'}`}
         >
           <Settings className="w-6 h-6" />
