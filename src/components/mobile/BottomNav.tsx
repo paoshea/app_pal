@@ -24,21 +24,21 @@ export default function BottomNav() {
           <span className="text-xs">Dashboard</span>
         </Link>
         <Link 
-          to="projects" 
+          to="/app/projects" 
           className={`flex flex-col items-center ${isActive('/app/projects') ? 'text-blue-600' : 'text-gray-600'}`}
         >
           <Layout className="w-6 h-6" />
           <span className="text-xs">Projects</span>
         </Link>
         <Link 
-          to="project-ideas" 
+          to="/app/project-ideas" 
           className={`flex flex-col items-center ${isActive('/app/project-ideas') ? 'text-blue-600' : 'text-gray-600'}`}
         >
           <Lightbulb className="w-6 h-6" />
           <span className="text-xs">Ideas</span>
         </Link>
         <Link 
-          to="settings" 
+          to="/app/settings" 
           className={`flex flex-col items-center ${isActive('/app/settings') ? 'text-blue-600' : 'text-gray-600'}`}
         >
           <Settings className="w-6 h-6" />
