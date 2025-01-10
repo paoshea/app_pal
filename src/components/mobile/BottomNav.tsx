@@ -11,7 +11,7 @@ export default function BottomNav() {
 
   if (!isMobile || !isAuthenticated) return null;
 
-  const isActive = (path: string) => location.pathname.endsWith(path);
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hidden">
@@ -24,8 +24,8 @@ export default function BottomNav() {
           <span className="text-xs">Dashboard</span>
         </Link>
         <Link 
-          to="projects" 
-          className={`flex flex-col items-center ${isActive('projects') ? 'text-blue-600' : 'text-gray-600'}`}
+          to="/app/projects" 
+          className={`flex flex-col items-center ${isActive('/app/projects') ? 'text-blue-600' : 'text-gray-600'}`}
         >
           <Layout className="w-6 h-6" />
           <span className="text-xs">Projects</span>
