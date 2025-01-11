@@ -78,7 +78,7 @@ function Features() {
           Join thousands of developers who have already enhanced their workflow
         </p>
         <div className="flex space-x-4 justify-center">
-          <Link to="/guest/dashboard" className="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center font-medium">
+          <Link to="/guest-dashboard" className="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center font-medium">
             Try Guest Dashboard <ArrowRight className="ml-2 w-4 h-4" />
           </Link>
           <Link to="/register" className="px-6 py-3 text-white bg-blue-500 rounded-lg hover:bg-blue-600 flex items-center font-medium ml-4">
