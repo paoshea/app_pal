@@ -1,36 +1,59 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { NavLink } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
-import { getNavigationConfig } from '../../utils/navigationConfig';
+import { Home, Settings, Lightbulb, FolderGit2 } from 'lucide-react';
 
 export default function BottomNav() {
-  const isMobile = useMediaQuery('(max-width: 1024px)');
   const { isAuthenticated } = useAuthStore();
-  const location = useLocation();
 
-  if (!isMobile || !isAuthenticated) return null;
+  const navigationLinks = [
+    {
+      path: '/app/dashboard',
+      label: 'Dashboard',
+      icon: Home,
+    },
+    {
+      path: '/app/projects',
+      label: 'Projects',
+      icon: FolderGit2,
+    },
+    {
+      path: '/app/project-ideas',
+      label: 'Ideas',
+      icon: Lightbulb,
+    },
+    {
+      path: '/app/settings',
+      label: 'Settings',
+      icon: Settings,
+    }
+  ];
 
-  const isActive = (path: string) => location.pathname.startsWith(path);
-  const navigationLinks = getNavigationConfig(isAuthenticated);
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 pb-safe-area md:hidden">
       <div className="flex justify-around items-center h-16">
         {navigationLinks.map((link) => {
           const Icon = link.icon;
           return (
-            <Link 
+            <NavLink
               key={link.path}
               to={link.path}
-              className={`flex flex-col items-center ${isActive(link.path) ? 'text-blue-600' : 'text-gray-600'}`}
+              className={({ isActive }) =>
+                `flex flex-col items-center px-3 py-2 ${
+                  isActive ? 'text-blue-600' : 'text-gray-600 hover:text-gray-900'
+                }`
+              }
             >
-              <Icon className="w-6 h-6" />
-              <span className="text-xs">{link.label}</span>
-            </Link>
+              <Icon className="h-6 w-6" />
+              <span className="text-xs mt-1">{link.label}</span>
+            </NavLink>
           );
         })}
       </div>
-    </div>
+    </nav>
   );
 }

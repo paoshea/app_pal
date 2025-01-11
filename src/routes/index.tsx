@@ -68,12 +68,20 @@ const router = createBrowserRouter([
         element: <ProtectedRoute><Dashboard /></ProtectedRoute>
       },
       {
+        path: 'ideas',
+        element: <ProtectedRoute><ProjectIdeas /></ProtectedRoute>
+      },
+      {
         path: 'project-ideas',
         element: <ProtectedRoute><ProjectIdeas /></ProtectedRoute>
       },
       {
         path: 'projects',
         element: <ProtectedRoute><Projects /></ProtectedRoute>
+      },
+      {
+        path: 'project-details/:id',
+        element: <ProtectedRoute><ProjectDetails /></ProtectedRoute>
       },
       {
         path: 'projects/:id',

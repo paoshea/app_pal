@@ -19,7 +19,7 @@ export default function NavLinks() {
       icon: FolderGit2,
     },
     {
-      path: '/app/ideas',
+      path: '/app/project-ideas',
       label: 'Ideas',
       icon: Lightbulb,
     },
