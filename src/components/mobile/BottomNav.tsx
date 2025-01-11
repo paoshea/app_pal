@@ -17,29 +17,29 @@ export default function BottomNav() {
     <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hidden">
       <div className="flex justify-around items-center h-16">
         <Link 
-          to="/app/dashboard" 
-          className={`flex flex-col items-center ${isActive('/app/dashboard') ? 'text-blue-600' : 'text-gray-600'}`}
+          to="dashboard" 
+          className={`flex flex-col items-center ${isActive('dashboard') ? 'text-blue-600' : 'text-gray-600'}`}
         >
           <Home className="w-6 h-6" />
           <span className="text-xs">Dashboard</span>
         </Link>
         <Link 
-          to="/app/projects" 
-          className={`flex flex-col items-center ${isActive('/app/projects') ? 'text-blue-600' : 'text-gray-600'}`}
+          to="projects" 
+          className={`flex flex-col items-center ${isActive('projects') ? 'text-blue-600' : 'text-gray-600'}`}
         >
           <Layout className="w-6 h-6" />
           <span className="text-xs">Projects</span>
         </Link>
         <Link 
-          to="/app/project-ideas" 
-          className={`flex flex-col items-center ${isActive('/app/project-ideas') ? 'text-blue-600' : 'text-gray-600'}`}
+          to="project-ideas" 
+          className={`flex flex-col items-center ${isActive('project-ideas') ? 'text-blue-600' : 'text-gray-600'}`}
         >
           <Lightbulb className="w-6 h-6" />
           <span className="text-xs">Ideas</span>
         </Link>
         <Link 
-          to="/app/settings" 
-          className={`flex flex-col items-center ${isActive('/app/settings') ? 'text-blue-600' : 'text-gray-600'}`}
+          to="settings" 
+          className={`flex flex-col items-center ${isActive('settings') ? 'text-blue-600' : 'text-gray-600'}`}
         >
           <Settings className="w-6 h-6" />
           <span className="text-xs">Settings</span>
