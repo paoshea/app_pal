@@ -1,24 +1,37 @@
+
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import { toast } from 'sonner';
+import LoadingSpinner from '../components/common/LoadingSpinner';
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
   const { login, isLoading } = useAuthStore();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email || !password) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
     try {
       await login(email, password);
+      const from = location.state?.from?.pathname || '/app/dashboard';
       toast.success('Successfully signed in!');
-      navigate('/app/dashboard');
+      navigate(from, { replace: true });
     } catch (error) {
       toast.error('Sign in failed. Please check your credentials and try again.');
     }
   };
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
