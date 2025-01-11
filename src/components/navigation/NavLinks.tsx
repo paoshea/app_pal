@@ -1,39 +1,17 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
-import { Home, Settings, LogOut, Lightbulb, FolderGit2 } from 'lucide-react';
+import { LogOut } from 'lucide-react';
+import { getNavigationConfig } from '../../utils/navigationConfig';
 
 export default function NavLinks() {
   const location = useLocation();
   const { isAuthenticated, logout } = useAuthStore();
-
-  const navigationConfig = [
-    {
-      path: '/app/dashboard',
-      label: 'Dashboard',
-      icon: Home,
-    },
-    {
-      path: '/app/projects',
-      label: 'Projects',
-      icon: FolderGit2,
-    },
-    {
-      path: '/app/project-ideas',
-      label: 'Ideas',
-      icon: Lightbulb,
-    },
-    {
-      path: '/app/settings',
-      label: 'Settings',
-      icon: Settings,
-    }
-  ];
+  const navigationLinks = getNavigationConfig(isAuthenticated);
 
   return (
     <nav className="space-y-1">
-      {navigationConfig.map((link) => {
+      {navigationLinks.map((link) => {
         const Icon = link.icon;
         const isActive = location.pathname === link.path;
 
