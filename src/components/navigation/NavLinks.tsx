@@ -1,15 +1,37 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Settings, LogOut, Users, BookOpen, Lightbulb, FolderGit2 } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
+import { Home, Settings, LogOut, Users, BookOpen, Lightbulb, FolderGit2 } from 'lucide-react';
 
 export default function NavLinks() {
   const location = useLocation();
   const { isAuthenticated, logout } = useAuthStore();
-  const navigationLinks = getNavigationConfig(isAuthenticated);
-  const links = [...navigationLinks];
-  
+
+  const navigationConfig = [
+    {
+      path: '/app/dashboard',
+      label: 'Dashboard',
+      icon: Home,
+    },
+    {
+      path: '/app/projects',
+      label: 'Projects',
+      icon: FolderGit2,
+    },
+    {
+      path: '/app/ideas',
+      label: 'Ideas',
+      icon: Lightbulb,
+    },
+    {
+      path: '/app/settings',
+      label: 'Settings',
+      icon: Settings,
+    }
+  ];
+
+  const links = [...navigationConfig];
+
   if (isAuthenticated) {
     links.push({ onClick: logout, label: 'Sign Out', icon: LogOut });
   }
