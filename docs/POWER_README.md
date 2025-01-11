@@ -1,97 +1,53 @@
-
 # App_Pal Power User Documentation
 
-## 🚀 User Journey Overview
+## 🚀 Core Navigation Flow
 
 ### 1. Authentication Flow
-- **Registration** (`src/pages/Register.tsx`)
-  - Create account with email/password
-  - Automatic redirect to dashboard
-- **Sign In** (`src/pages/SignIn.tsx`)
-  - Login with credentials
-  - Protected route handling (`src/routes/ProtectedRoute.tsx`)
+- **Sign In** (`/signin`)
+  - Credential validation
+  - Success redirection
+  - Error handling
+- **Registration** (`/register`)
+  - Account creation
+  - Welcome flow
 
-### 2. Dashboard Experience (`src/pages/Dashboard.tsx`)
-- Main control center featuring:
-  - Project statistics overview
-  - Recent projects grid
-  - Tech stack analytics
-  - Activity timeline
-- Quick actions:
-  - Create new project button
-  - Project filtering and search (`src/hooks/useProjectSearch.ts`)
+### 2. Dashboard Experience (`/app/dashboard`)
+- Project overview
+- Quick actions
+- Recent activity
+- Tech analytics
 
-### 3. Projects Management (`src/pages/Projects.tsx`)
-- Project listing and organization
-- Features powered by:
-  - Project dashboard component (`src/components/power/ProjectDashboard.tsx`)
-  - Priority management system (`src/components/power/ProjectPriorityManager.tsx`)
-  - Tech stack badges (`src/components/power/TechStackBadge.tsx`)
+### 3. Project Management (`/app/projects`)
+- Project listing
+- Creation workflow
+- Priority management
 
-### 4. Project Ideas Hub (`src/pages/ProjectIdeas.tsx`)
-- Idea creation and management
-- Local storage integration
-- Delete functionality
-- Timestamp tracking
+### 4. Ideas Hub (`/app/ideas`)
+- Idea management
+- Creation tools
+- Organization
 
-### 5. Project Details (`src/pages/ProjectDetails.tsx`)
-- Detailed project view
-- Tech stack management
-- Progress tracking
-- Team collaboration options
+### 5. Settings (`/app/settings`)
+- Profile management
+- Preferences
+- Account settings
 
-### 6. Settings Management (`src/pages/Settings.tsx`)
-- Profile settings
-- Notification preferences
-- Account management
+## 📱 Mobile Navigation
 
-## 💡 Key Features
+### Core Components
+- Bottom navigation bar
+- Quick access menu
+- Project shortcuts
+- Settings access
 
-### Project Management
-- **Creation**: `src/components/power/CreateProjectForm.tsx`
-- **Organization**: 
-  - Sorting (`src/hooks/useProjectSort.ts`)
-  - Searching (`src/hooks/useProjectSearch.ts`)
-  - Priority management
+## 🔐 Protected Routes
+- Dashboard access
+- Project management
+- Ideas section
+- Settings control
 
-### Tech Stack Integration
-- Stack visualization
-- Dependency tracking
-- Version management
-- Integration insights
-
-### Data Persistence
-- Local storage hooks (`src/hooks/useLocalStorage.ts`)
-- Project utilities (`src/utils/projectUtils.ts`)
-- Database integration (`src/utils/db.ts`)
-
-### UI/UX Features
-- Responsive layout (`src/components/Layout.tsx`)
-- Mobile navigation (`src/components/mobile/BottomNav.tsx`)
-- Loading states (`src/components/common/LoadingSpinner.tsx`)
-- Toast notifications (`src/components/common/Toast.tsx`)
-
-## 🔐 State Management
-- Authentication store (`src/store/authStore.ts`)
-- Form handling (`src/hooks/useForm.ts`)
-- Media queries (`src/hooks/useMediaQuery.ts`)
-
-## 🛠 Utilities
-- Date formatting (`src/utils/dateUtils.ts`)
-- Validation (`src/utils/validation.ts`)
-- Error reporting (`src/utils/errorReporting.ts`)
-- Security measures (`src/utils/security.ts`)
-
-## 📱 Mobile Experience
-- Swipeable cards (`src/components/mobile/SwipeableCard.tsx`)
-- Pull to refresh (`src/components/mobile/PullToRefresh.tsx`)
-- Bottom navigation (`src/components/mobile/BottomNav.tsx`)
-
-## 🎯 Navigation Flow
-1. Landing → Registration/Sign In
-2. Dashboard Overview
-3. Project Management
-4. Ideas Hub
-5. Settings Configuration
-
-Each section is protected by authentication checks and includes proper error handling through the ErrorBoundary component (`src/components/error/ErrorBoundary.tsx`).
+## 🎯 Navigation Structure
+1. Authentication → Dashboard
+2. Dashboard → Projects/Ideas
+3. Mobile Support
+4. Settings Access

@@ -2,184 +2,60 @@
 
 ## 🎯 Core User Journeys
 
-### 1. Discovery Flow
+### 1. Authentication Flow
 ```
-Landing → Interactive Demo → Feature Comparison → Guest Dashboard → Registration
-```
-
-### 2. Power User Onboarding
-```
-Registration → Guided Tour → Project Setup → Tech Stack Integration → Documentation
+Landing → SignIn/Register → Dashboard
 ```
 
-### 3. Guest to Power User Conversion
+### 2. Power User Experience
 ```
-Guest Projects → Feature Exploration → Upgrade Prompt → Seamless Migration → Enhanced Features
+Dashboard → Projects/Ideas/Settings
 ```
 
-## 👋 Guest Experience
+### 3. Mobile Experience
+```
+Mobile Navigation → Quick Actions → Project Management
+```
 
-### 1. Landing Experience
-- Modern, responsive landing showcase
-- Interactive feature demonstrations
-- Live project examples
-- One-click guest access
+## 👤 Authentication Experience
 
-### 2. Guest Dashboard
-- Quick project creation
-- Basic priority management
-- Limited but powerful features
-- Upgrade incentives
+### 1. Sign In
+- Email/password authentication
+- Redirect to dashboard
+- Error handling
+- Success notifications
 
-### 3. Project Management
-- Up to 10 projects
-- Basic documentation tools
-- Simple tech stack tracking
-- Project status updates
+### 2. Registration
+- Email/password registration
+- Username generation
+- Automatic dashboard redirect
+- Welcome experience
 
-### 4. Conversion Path
-- Feature comparison overlays
-- Progress preservation
-- Seamless upgrade process
-- Data migration assistance
+## 📱 Mobile Navigation
 
-## 🔐 Power User Experience
-
-### 1. Enhanced Dashboard
-- Comprehensive project overview
-- Advanced sorting and filtering
-- Tech stack analytics
-- Team collaboration tools
-
-### 2. Project Management
-- Unlimited projects
-- Priority matrix
-- Custom workflows
-- Advanced documentation
-
-### 3. Tech Stack Features
-- Stack visualization
-- Dependency tracking
-- Version management
-- Integration insights
-
-### 4. Collaboration Tools
-- Team workspace
-- Role management
-- Project sharing
-- Activity tracking
-
-## 📱 Mobile Experience
-
-### Responsive Design
-- Touch-optimized interface
-- Gesture controls
-- Offline capabilities
-- Progressive loading
-
-### Mobile Features
-- Quick actions
-- Swipe navigation
-- Mobile notifications
-- Responsive layouts
-
-## 🎨 Feature Matrix
-
-### Guest Features
-- Basic project creation (10 limit)
-- Simple priority management
-- Basic documentation
-- Tech stack tagging
-
-### Power Features
-- Unlimited projects
-- Advanced priority system
-- Rich documentation tools
-- Tech stack analytics
-- Team collaboration
-- Custom workflows
-- Integration capabilities
-
-## 🔄 Optimization Points
-
-### Performance
-- Progressive loading
-- Resource optimization
-- Cached data management
-- Offline support
-
-### User Experience
-- Contextual help
-- Interactive tutorials
-- Smart notifications
-- Personalized workflows
-
-## 🚀 Future Enhancements
-
-### Planned Features
-- AI-powered insights
-- Advanced analytics
-- Custom integrations
-- Workflow automation
-
-### Community Features
-- Project templates
-- Shared workflows
-- Resource library
-- Community support
-
-## 📈 Success Metrics
-
-### User Engagement
-- Project creation rate
-- Documentation completeness
-- Feature adoption
-- Upgrade conversion
-
-### Platform Health
-- Performance metrics
-- Error rates
-- User satisfaction
-- Feature usage
-
-### Power Users
-1. Project Management
-   - Advanced priority sorting
-   - Tech stack tracking
-   - Comprehensive dashboard
-   - Unlimited projects
-
-2. Documentation
-   - Rich documentation tools
-   - Project overview
-   - Tech stack insights
-   - Priority management
+### Core Features
+- Bottom navigation bar
+- Quick action buttons
+- Project access
+- Settings management
 
 ## 🎨 Available Features
 
 ### Guest Features
-- Basic project creation
-- Simple priority setting
-- Documentation editor
-- Limited to 10 projects
+- Project viewing
+- Basic documentation
+- Limited features
 
 ### Power Features
-- Advanced priority management
-- Tech stack analytics
-- Comprehensive dashboard
-- Unlimited projects
-- Enhanced documentation tools
+- Full project management
+- Tech stack tracking
+- Ideas management
+- Settings control
 
-## 📈 Future Development
+## 📈 Success Metrics
 
-### Planned Features
-- Team collaboration
-- Integration features
-- Advanced analytics
-- Custom workflows
-
-### Upcoming Improvements
-- Enhanced mobile experience
-- Additional tech stack support
-- Advanced documentation tools
-- Team management features
+### User Engagement
+- Sign-in success rate
+- Navigation completion
+- Feature usage tracking
+- Project creation rate
