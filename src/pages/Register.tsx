@@ -11,14 +11,17 @@ function Register() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email || !password) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
     try {
       await register(email, password, email.split('@')[0]);
-      toast.success('Registration successful! Redirecting to dashboard...');
-      setTimeout(() => {
-        navigate('/app/dashboard', { replace: true });
-      }, 1500);
+      toast.success('Registration successful!');
+      navigate('/app/dashboard', { replace: true });
     } catch (error) {
-      toast.error('Registration failed. Please try again.');
+      toast.error('Registration failed. Please check your details and try again.');
     }
   };
 
