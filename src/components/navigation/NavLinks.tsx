@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
-import { Home, Settings, LogOut, Users, BookOpen, Lightbulb, FolderGit2 } from 'lucide-react';
+import { Home, Settings, LogOut, Lightbulb, FolderGit2 } from 'lucide-react';
 
 export default function NavLinks() {
   const location = useLocation();
@@ -30,30 +31,11 @@ export default function NavLinks() {
     }
   ];
 
-  const links = [...navigationConfig];
-
-  if (isAuthenticated) {
-    links.push({ onClick: logout, label: 'Sign Out', icon: LogOut });
-  }
-
   return (
     <nav className="space-y-1">
-      {links.map((link) => {
+      {navigationConfig.map((link) => {
         const Icon = link.icon;
-        const isActive = link.path ? location.pathname === link.path : false;
-
-        if (link.onClick) {
-          return (
-            <button
-              key={link.label}
-              onClick={link.onClick}
-              className="flex items-center w-full px-4 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-            >
-              <Icon className="w-5 h-5 mr-3" />
-              {link.label}
-            </button>
-          );
-        }
+        const isActive = location.pathname === link.path;
 
         return (
           <Link
@@ -70,6 +52,15 @@ export default function NavLinks() {
           </Link>
         );
       })}
+      {isAuthenticated && (
+        <button
+          onClick={logout}
+          className="flex items-center w-full px-4 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+        >
+          <LogOut className="w-5 h-5 mr-3" />
+          Sign Out
+        </button>
+      )}
     </nav>
   );
 }

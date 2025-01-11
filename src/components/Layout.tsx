@@ -76,7 +76,7 @@ function Layout({ children }: LayoutProps) {
         </div>
       </main>
 
-      <BottomNav />
+      { isAuthenticated && <BottomNav />} {/*Conditional rendering of BottomNav */}
     </div>
   );
 }
